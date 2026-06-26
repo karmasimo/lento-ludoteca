@@ -1,0 +1,730 @@
+/* Lento Ludoteca - Design System & Styling */
+
+:root {
+  /* Color Palette (Modern Cozy) */
+  --color-bg: #fcfbf7;
+  --color-card-bg: #ffffff;
+  --color-text-main: #1e293b;
+  --color-text-muted: #64748b;
+  --color-accent: #e05a47; /* Terracotta */
+  --color-accent-hover: #c24331;
+  --color-accent-light: #fef2f2;
+  --color-border: #e2e8f0;
+  --color-shadow: rgba(30, 41, 59, 0.04);
+  --color-shadow-hover: rgba(30, 41, 59, 0.08);
+  
+  /* Fonts */
+  --font-family-title: 'Outfit', 'Inter', sans-serif;
+  --font-family-body: 'Inter', sans-serif;
+  
+  /* Layout constraints */
+  --max-width: 1200px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+}
+
+/* Reset & Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  font-family: var(--font-family-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Header */
+.app-header {
+  background-color: var(--color-card-bg);
+  border-bottom: 1px solid var(--color-border);
+  padding: 2.5rem 1.5rem;
+}
+
+.header-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.brand-badge {
+  margin-bottom: 1rem;
+}
+
+.badge-tag {
+  background-color: var(--color-accent-light);
+  color: var(--color-accent);
+  font-family: var(--font-family-title);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 100px;
+  display: inline-block;
+}
+
+.logo-title-row {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.bar-lento-logo {
+  color: var(--color-text-main);
+  width: 140px;
+  flex-shrink: 0;
+}
+
+.bar-lento-logo svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.title-details h1 {
+  font-family: var(--font-family-title);
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+
+.title-details .subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+/* Interactive Filters Section */
+.filters-section {
+  padding: 2rem 1.5rem;
+  background-color: rgba(252, 251, 247, 0.8);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.filters-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media(min-width: 768px) {
+  .filters-container {
+    grid-template-columns: 1.5fr 2.5fr;
+    align-items: flex-end;
+  }
+}
+
+.search-box {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.85rem 1rem 0.85rem 2.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-body);
+  font-size: 0.95rem;
+  color: var(--color-text-main);
+  background-color: var(--color-card-bg);
+  box-shadow: 0 2px 8px var(--color-shadow);
+  transition: all 0.2s ease;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(224, 90, 71, 0.15);
+}
+
+.dropdowns-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media(min-width: 576px) {
+  .dropdowns-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(min-width: 992px) {
+  .dropdowns-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.filter-group label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper::after {
+  content: "";
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid var(--color-text-muted);
+  pointer-events: none;
+}
+
+.select-wrapper select {
+  width: 100%;
+  padding: 0.85rem 2rem 0.85rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-card-bg);
+  font-family: var(--font-family-body);
+  font-size: 0.95rem;
+  color: var(--color-text-main);
+  appearance: none;
+  box-shadow: 0 2px 8px var(--color-shadow);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.select-wrapper select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(224, 90, 71, 0.15);
+}
+
+/* Catalog Main */
+.catalog-main {
+  padding: 3rem 1.5rem;
+}
+
+.catalog-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: var(--font-family-title);
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+}
+
+/* Games Grid */
+.games-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media(min-width: 576px) {
+  .games-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(min-width: 992px) {
+  .games-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.game-card {
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 12px var(--color-shadow);
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px var(--color-shadow-hover);
+}
+
+.card-img-wrapper {
+  position: relative;
+  aspect-ratio: 16/9;
+  width: 100%;
+  overflow: hidden;
+  background-color: #f1f5f9;
+}
+
+.game-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.game-card:hover .game-img {
+  transform: scale(1.05);
+}
+
+.game-difficulty-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-family: var(--font-family-title);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 100px;
+  background-color: #f1f5f9;
+  color: var(--color-text-main);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.game-difficulty-badge.facile {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.game-difficulty-badge.medio {
+  background-color: #fef9c3;
+  color: #a16207;
+}
+
+.game-difficulty-badge.difficile {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.game-category {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.game-title {
+  font-family: var(--font-family-title);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.game-short-desc {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+.game-specs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  color: var(--color-text-main);
+  font-weight: 500;
+}
+
+.spec-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.spec-item svg {
+  color: var(--color-accent);
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  border-top: 1px solid var(--color-border);
+  padding-top: 1rem;
+}
+
+.tag-badge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background-color: #f1f5f9;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--color-text-muted);
+}
+
+.no-results svg {
+  margin-bottom: 1rem;
+  color: var(--color-border);
+}
+
+/* Footer */
+.app-footer {
+  background-color: var(--color-text-main);
+  color: #94a3b8;
+  padding: 3rem 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.footer-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.footer-note {
+  margin-bottom: 1.5rem;
+  color: #cbd5e1;
+}
+
+.co-branding {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.brand-link {
+  color: #f8fafc;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.brand-link:hover {
+  color: var(--color-accent);
+}
+
+/* Modal Booking Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-card {
+  background-color: var(--color-card-bg);
+  width: 100%;
+  max-width: 600px; /* Ridotto per layout verticale compatto */
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  position: relative;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-overlay.active .modal-card {
+  transform: scale(1);
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: rgba(15, 23, 42, 0.6); /* Sfondo scuro semitrasparente */
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+  background-color: rgba(15, 23, 42, 0.9);
+  transform: scale(1.05);
+}
+
+/* Modal Grid - Stacked Vertically */
+.modal-grid {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden; /* Evita il doppio scorrimento, l'immagine rimane fissa in alto */
+}
+
+.modal-visual {
+  position: relative;
+  background-color: #0f172a; /* Base scura per far risaltare la copertina */
+  display: flex;
+  align-items: flex-end; /* Allinea i badge al fondo */
+  justify-content: flex-start;
+  padding: 0;
+  overflow: hidden;
+  height: 280px; /* Altezza fissa ottimale per il banner della copertina */
+  flex-shrink: 0;
+}
+
+/* Effetto sfocato per copertine che non riempiono perfettamente (in caso di fallback) */
+.modal-visual::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  filter: blur(20px) brightness(0.4);
+  opacity: 0.85;
+  z-index: 0;
+}
+
+/* Overlay sfumato scuro per garantire leggibilità ottimale dei badge */
+.modal-visual::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0) 100%);
+  z-index: 1;
+}
+
+.modal-visual img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Copertina a tutta larghezza e altezza */
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.modal-badges-container {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  z-index: 2; /* Sopra l'overlay sfumato */
+}
+
+.modal-badge {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: var(--color-text-main);
+  padding: 0.4rem 0.8rem;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.modal-badge.difficulty-badge.facile {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+.modal-badge.difficulty-badge.medio {
+  background-color: #fef9c3;
+  color: #a16207;
+}
+.modal-badge.difficulty-badge.difficile {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+/* Modal Info Panel */
+.modal-info {
+  padding: 2rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.modal-category {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.modal-title {
+  font-family: var(--font-family-title);
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.modal-description {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--color-border);
+  margin-bottom: 2rem;
+}
+
+/* Booking form styling */
+.booking-section h3 {
+  font-family: var(--font-family-title);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.booking-subtitle {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-body);
+  font-size: 0.9rem;
+  background-color: #f8fafc;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  background-color: var(--color-card-bg);
+  box-shadow: 0 0 0 3px rgba(224, 90, 71, 0.1);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.submit-booking-btn {
+  width: 100%;
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+  padding: 0.9rem 1.5rem;
+  font-family: var(--font-family-title);
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.submit-booking-btn:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.btn-icon {
+  margin-right: 0.25rem;
+}
