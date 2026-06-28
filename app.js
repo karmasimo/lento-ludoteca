@@ -12,7 +12,7 @@ const GAMES_DATABASE = [
     duration: "30-60 min",
     category: "Playtest / Delirimedia",
     difficulty: "Medio",
-    tags: ["Playtest", "Carte", "Made in Rimini", "Folle"],
+    tags: ["Playtest", "Carte", "Tutti contro tutti", "Competitivo", "Made in Rimini", "Folle"],
     description: "Il nuovo e folle gioco di carte in sviluppo da DELIRIMEDIA. Provalo in anteprima alle Lento Game Nights, partecipa al playtesting pubblico e lascia il tuo feedback!",
     image: "https://images.unsplash.com/photo-1611195974226-a6a9be9dd763?auto=format&fit=crop&q=80&w=600"
   },
@@ -23,7 +23,7 @@ const GAMES_DATABASE = [
     duration: "15-30 min",
     category: "Party / Carte",
     difficulty: "Facile",
-    tags: ["Rapido", "Carte", "Adatto a tutti"],
+    tags: ["Rapido", "Carte", "Tutti contro tutti", "Competitivo", "Adatto a tutti"],
     description: "Un gioco di carte frenetico in cui devi mantenere il punteggio totale sotto il 21. Strategia e colpi di scena continui!",
     image: "https://cf.geekdo-images.com/mtyHAXeTBbIFL8upWfWdtg__opengraph/img/lN5vV09JL49itK1yBlcdT0qUpa4=/0x600:1074x1272/fit-in/1200x630/filters:fill(blur):strip_icc()/pic8875463.jpg"
   },
@@ -34,8 +34,8 @@ const GAMES_DATABASE = [
     duration: "30-45 min",
     category: "Party / Carte (Vietato ai minori)",
     difficulty: "Facile",
-    tags: ["Carte", "Satirico", "Adulti", "Social"],
-    description: "Il celebre e dissacrante gioco di carte satirico ideato da Immanuel Casto. In questa versione Evolution gestisci la tua scuderia di creator e escort nel mondo digitale dei social media, delle visualizzazioni e dei like. Riservato a un pubblico adulto.",
+    tags: ["Carte", "Satirico", "Tutti contro tutti", "Competitivo", "Adulti", "Social"],
+    description: "Il celebre e dissacrante gioco di carte satirico ideato da Immanuel Casto. In questa versione Evolution gestisci la sua scuderia di creator e escort nel mondo digitale dei social media, delle visualizzazioni e dei like. Riservato a un pubblico adulto.",
     image: "https://www.studiosupernova.it/cdn/shop/files/cover_4f199b41-aa64-4fd2-9fbc-6024e74d9314.jpg?v=1778492498"
   },
   {
@@ -45,7 +45,7 @@ const GAMES_DATABASE = [
     duration: "60-90 min",
     category: "Strategia / Classico",
     difficulty: "Medio",
-    tags: ["Risorse", "Trattative", "Classico"],
+    tags: ["Risorse", "Trattative", "Tutti contro tutti", "Competitivo", "Classico"],
     description: "Raccogli risorse, costruisci strade e colonie sull'isola di Catan. Negozia duramente con gli altri giocatori per raggiungere la vittoria.",
     image: "https://cf.geekdo-images.com/0XODRpReiZBFUffEcqT5-Q__opengraph/img/ARkyerUcE8vdJx0U5S0eVM0RTzY=/0x0:1000x525/fit-in/1200x630/filters:strip_icc()/pic9156909.png"
   },
@@ -56,7 +56,7 @@ const GAMES_DATABASE = [
     duration: "15 min",
     category: "Party / Bluff",
     difficulty: "Facile",
-    tags: ["Bluff", "Rapido", "Deduzione"],
+    tags: ["Bluff", "Rapido", "A squadre", "Ruoli segreti", "Competitivo", "Deduzione"],
     description: "Tutti conoscono la parola segreta tranne il Camaleonte. Trova l'intruso o inganna tutti per mimetizzarti senza farti scoprire.",
     image: "https://cf.geekdo-images.com/-uBkiypUVyRKxNuOI_-ZpQ__opengraph/img/WJY75yualZKr9U1G1sixKKLRpxA=/0x37:851x484/fit-in/1200x630/filters:strip_icc()/pic3552344.png"
   },
@@ -67,7 +67,7 @@ const GAMES_DATABASE = [
     duration: "30 min",
     category: "Party / Creativo",
     difficulty: "Facile",
-    tags: ["Immaginazione", "Storytelling", "Adatto a tutti"],
+    tags: ["Immaginazione", "Storytelling", "Tutti contro tutti", "Competitivo", "Adatto a tutti"],
     description: "Usa la fantasia per descrivere carte illustrate uniche con frasi, canzoni o espressioni, cercando di essere misterioso al punto giusto.",
     image: "https://cf.geekdo-images.com/J0PlHArkZDJ57H-brXW2Fw__opengraph/img/WDuER7xqK418ih7wBPlaXzS8lhg=/0x0:3271x1717/fit-in/1200x630/filters:strip_icc()/pic6738336.jpg"
   },
@@ -89,7 +89,7 @@ const GAMES_DATABASE = [
     duration: "15 min",
     category: "Party / Carte",
     difficulty: "Facile",
-    tags: ["Rapido", "Bastardo", "Gatti"],
+    tags: ["Rapido", "Bastardo", "Tutti contro tutti", "Competitivo", "Gatti"],
     description: "Una roulette russa felina ad altissima tensione. Pesca le carte, evita i gattini esplosivi e usa i disinneschi per sabotare i tuoi amici.",
     image: "https://cf.geekdo-images.com/N8bL53-pRU7zaXDTrEaYrw__opengraph/img/2GQDDt2HfOV58ip2jT-eJLQ6o-k=/0x0:680x357/fit-in/1200x630/filters:strip_icc()/pic2691976.png"
   },
@@ -100,7 +100,7 @@ const GAMES_DATABASE = [
     duration: "15-20 min",
     category: "Party / Push-Your-Luck",
     difficulty: "Facile",
-    tags: ["Rapido", "Fortuna", "Push Your Luck"],
+    tags: ["Rapido", "Fortuna", "Tutti contro tutti", "Competitivo", "Push Your Luck"],
     description: "Gira le carte una alla volta. Puoi fermarti e accumulare punti, o rischiare di sballare se esce un doppione. Semplice ed estremamente additivo!",
     image: "https://cf.geekdo-images.com/YrQxEB9Ef0kQorRApzG5vQ__opengraph/img/hziHazLor3j2SyWQHnEiPvn6ejQ=/0x747:3000x2339/fit-in/1200x630/filters:fill(blur):strip_icc()/pic8780246.jpg"
   },
@@ -111,7 +111,7 @@ const GAMES_DATABASE = [
     duration: "30 min",
     category: "Party / Colori",
     difficulty: "Facile",
-    tags: ["Colori", "Indovinelli", "Adatto a tutti"],
+    tags: ["Colori", "Indovinelli", "Tutti contro tutti", "A squadre", "Competitivo", "Adatto a tutti"],
     description: "Dai indizi composti da una o due parole per far indovinare una sfumatura cromatica esatta su un tabellone con 480 tonalità di colore.",
     image: "https://cf.geekdo-images.com/jdR8WW75HkaoHGMTCIx9lA__opengraph/img/NajbrVlj1oHqoDU5oTFl31buNgs=/0x181:1000x706/fit-in/1200x630/filters:strip_icc()/pic5390676.jpg"
   },
@@ -122,7 +122,7 @@ const GAMES_DATABASE = [
     duration: "30 min",
     category: "Party / Creativo",
     difficulty: "Facile",
-    tags: ["Creativo", "Trasparenze", "Adatto a tutti"],
+    tags: ["Creativo", "Trasparenze", "Tutti contro tutti", "Competitivo", "Adatto a tutti"],
     description: "Usa 60 carte trasparenti con icone minimaliste per far indovinare film, luoghi, concetti o personaggi, animandole e sovrapponendole.",
     image: "https://cf.geekdo-images.com/K-Hp2v5Bc_UKMGlBF2oIEQ__opengraph/img/B1X16lBujo7CFeEdmQNdo3eg37c=/0x32:1500x820/fit-in/1200x630/filters:strip_icc()/pic3061260.jpg"
   },
@@ -133,7 +133,7 @@ const GAMES_DATABASE = [
     duration: "30-45 min",
     category: "Card Game / Logica",
     difficulty: "Medio",
-    tags: ["Strategia", "Carte", "Logica"],
+    tags: ["Strategia", "Carte", "Tutti contro tutti", "Competitivo", "Logica"],
     description: "Un gioco di prese in cui vedi solo il retro delle tuoi carte ma non il fronte. Devi dedurre la tua mano osservando quella degli altri.",
     image: "https://cf.geekdo-images.com/w_ra75mMg4lvtUKkXnIT8Q__opengraph/img/tg2z2nVLqsEnZL1XFLNYol26BvU=/0x147:548x434/fit-in/1200x630/filters:strip_icc()/pic8781923.jpg"
   },
@@ -144,7 +144,7 @@ const GAMES_DATABASE = [
     duration: "60-120 min",
     category: "Classico / Nerd",
     difficulty: "Facile",
-    tags: ["Nerd", "Trattative", "Classico"],
+    tags: ["Nerd", "Trattative", "Tutti contro tutti", "Competitivo", "Classico"],
     description: "Il grande classico dei giochi immobiliari calato nel multiverso folle di Rick and Morty. Compra Scatole di Meeseeks e Flumble Gland!",
     image: "https://cf.geekdo-images.com/Ov7dR64QkqjT5hJiUib6dg__opengraph/img/e7Dnv4E2J7Wlj4jVEvTxSuhT1bk=/0x54:1500x841/fit-in/1200x630/filters:strip_icc()/pic5091172.jpg"
   },
@@ -155,8 +155,8 @@ const GAMES_DATABASE = [
     duration: "60 min",
     category: "Card Game / Parodia",
     difficulty: "Medio",
-    tags: ["Bastardo", "Nerd", "Competitivo"],
-    description: "Uccidi i mostri, ruba il tesoro, pugnala i tuoi amici alle spalle! La parodia definitiva dei giochi di ruolo fantasy e sci-fi.",
+    tags: ["Bastardo", "Nerd", "Tutti contro tutti", "Competitivo"],
+    description: "Ucellidi i mostri, ruba il tesoro, pugnala i tuoi amici alle spalle! La parodia definitiva dei giochi di ruolo fantasy e sci-fi.",
     image: "https://cf.geekdo-images.com/J-ts3MW0UhDzs621TR6cog__opengraph/img/dUuakmG6d2163XCgoitr7os8mpE=/0x0:444x233/fit-in/1200x630/filters:strip_icc()/pic1871016.jpg"
   },
   {
@@ -166,7 +166,7 @@ const GAMES_DATABASE = [
     duration: "40 min",
     category: "Cooperativo / Traditore",
     difficulty: "Medio",
-    tags: ["Cooperativo", "Traditore", "Indizi Visivi"],
+    tags: ["Cooperativo", "Traditore", "Ruoli segreti", "Indizi Visivi"],
     description: "Fuggi dalla biblioteca stregata interpretando gli indizi visivi del Grimorio, ma fai attenzione: uno di voi è un traditore infiltrato!",
     image: "https://cf.geekdo-images.com/gSBn3vnTQ6Hh6JmxA38N7g__opengraph/img/s20WQRwRja7eivAV9hdPuTC0uMA=/0x0:3371x1770/fit-in/1200x630/filters:strip_icc()/pic4611791.jpg"
   },
@@ -177,7 +177,7 @@ const GAMES_DATABASE = [
     duration: "15 min",
     category: "Party / Parole",
     difficulty: "Facile",
-    tags: ["Rapido", "Parole", "Riflessi"],
+    tags: ["Rapido", "Parole", "A squadre", "Competitivo", "Riflessi"],
     description: "Un gioco di velocità mentale in cui devi trovare parole coerenti con i temi estratti prima che lo facciano gli avversari.",
     image: "https://cdn.svc.asmodee.net/production-asmodeeit/uploads/image-converter/2022/09/MPM_packshot_3D_IT.webp"
   },
@@ -188,7 +188,7 @@ const GAMES_DATABASE = [
     duration: "20-30 min",
     category: "Party / Musica",
     difficulty: "Facile",
-    tags: ["Musica", "Trivia", "Adatto a tutti"],
+    tags: ["Musica", "Trivia", "Tutti contro tutti", "Competitivo", "Adatto a tutti"],
     description: "Metti alla prova la tua cultura musicale! Ordina cronologicamente le hit degli ultimi decenni e canticchiale per vincere.",
     image: "https://cf.geekdo-images.com/R4aQbIo0KZ6npxfhUc7ZYw__opengraph/img/KqtyJtbRR4jCTQQZ1Y8dICoIaMI=/0x152:938x645/fit-in/1200x630/filters:strip_icc()/pic6958739.png"
   },
@@ -199,7 +199,7 @@ const GAMES_DATABASE = [
     duration: "30 min",
     category: "Bluff / Ruoli",
     difficulty: "Facile",
-    tags: ["Bluff", "Ruoli Segreti", "Adatto a tutti"],
+    tags: ["Bluff", "Ruoli Segreti", "A squadre", "Competitivo", "Adatto a tutti"],
     description: "Scava gallerie per trovare l'oro insieme ai tuoi colleghi nani, ma occhio ai sabotatori che faranno di tutto per farti crollare la miniera.",
     image: "https://cf.geekdo-images.com/oeN-MHAJKsC2KCI3avKj9w__opengraph/img/A2DAi98f5tvBoXIRt6nuHU1PXnQ=/0x0:1134x595/fit-in/1200x630/filters:strip_icc()/pic8679622.jpg"
   },
@@ -210,7 +210,7 @@ const GAMES_DATABASE = [
     duration: "45 min",
     category: "Social Deduction / Politico",
     difficulty: "Medio",
-    tags: ["Bluff", "Ruoli Segreti", "Intrigante"],
+    tags: ["Bluff", "Ruoli Segreti", "A squadre", "Competitivo", "Intrigante"],
     description: "Un thriller politico ambientato nella Germania degli anni '30. Liberali e Fascisti si scontrano per far approvare le proprie leggi.",
     image: "https://cf.geekdo-images.com/rAQ3hIXoH6xDcj41v9iqCg__opengraph/img/ae8mg6V5TH2WKatln7JHz3BIi8I=/8x0:693x360/fit-in/1200x630/filters:strip_icc()/pic5164305.jpg"
   },
@@ -221,7 +221,7 @@ const GAMES_DATABASE = [
     duration: "30-45 min",
     category: "Party / Storytelling",
     difficulty: "Facile",
-    tags: ["Creativo", "Improvvisazione", "Divertente"],
+    tags: ["Creativo", "Improvvisazione", "Tutti contro tutti", "Competitivo", "Divertente"],
     description: "Scarica il barile e inventa scuse assurde per giustificare il fallimento della missione davanti all'ira dell'Oscuro Signore Rigor Mortis.",
     image: "https://cf.geekdo-images.com/rKOHJmJWSjKPMVGZlCr6vQ__opengraph/img/43lf32TETSWkz9DF6B3QCMhfZUo=/0x232:524x752/fit-in/1200x630/filters:fill(blur):strip_icc()/pic5335995.jpg"
   },
@@ -232,7 +232,7 @@ const GAMES_DATABASE = [
     duration: "20 min",
     category: "Party / Disegno",
     difficulty: "Facile",
-    tags: ["Disegno", "Rapido", "Divertente"],
+    tags: ["Disegno", "Rapido", "Tutti contro tutti", "Competitivo", "Divertente"],
     description: "Disegna parole d'indizio velocemente, ma con un vincolo: puoi fare solo pochissimi tratti e gli altri devono capire al volo.",
     image: "http://frogames.it/cdn/shop/files/Sketch_00.webp?v=1774173926"
   },
@@ -243,7 +243,7 @@ const GAMES_DATABASE = [
     duration: "30 min",
     category: "Party / Parole",
     difficulty: "Facile",
-    tags: ["Classico", "Parole", "Adatto a tutti"],
+    tags: ["Classico", "Parole", "A squadre", "Competitivo", "Adatto a tutti"],
     description: "Fai indovinare la parola chiave ai tuoi compagni di squadra senza usare i termini vietati (\"taboo\"). La clessidra corre!",
     image: "https://cf.geekdo-images.com/TdOB9V-wTf0LenXk8QWo-A__opengraph/img/EiOacVnTNV_l8vo-wM_2J84V9WI=/0x336:540x620/fit-in/1200x630/filters:strip_icc()/pic8377520.jpg"
   },
@@ -254,7 +254,7 @@ const GAMES_DATABASE = [
     duration: "120-180 min",
     category: "Avventura / Fantasy",
     difficulty: "Medio",
-    tags: ["Lungo", "Fantasy", "Avventura"],
+    tags: ["Lungo", "Fantasy", "Tutti contro tutti", "Competitivo", "Avventura"],
     description: "Il leggendario gioco d'avventura magica. Potenzia il tuo eroe, combatti mostri e ottieni il Talismano per raggiungere la Corona del Comando.",
     image: "https://cf.geekdo-images.com/PxQnAcYv74J-dJW_s6CHMA__opengraph/img/Y4C7g9ShLjfKpJICkLWm3r-uuSc=/0x0:1200x630/fit-in/1200x630/filters:strip_icc()/pic332870.jpg"
   },
@@ -265,7 +265,7 @@ const GAMES_DATABASE = [
     duration: "45-90 min",
     category: "Classico / Quiz",
     difficulty: "Facile",
-    tags: ["Quiz", "Classico", "Cultura"],
+    tags: ["Quiz", "Classico", "Tutti contro tutti", "Competitivo", "Cultura"],
     description: "Rispondi a domande divise in 6 categorie per riempire la tua pedina con i triangolini colorati e vincere il duello della cultura generale.",
     image: "https://cf.geekdo-images.com/CSILODNknzqhsDxeP8jmgw__opengraph/img/7cfqFgr02BQz8rvzjD1xed4DcV8=/0x283:1600x1123/fit-in/1200x630/filters:strip_icc()/pic6912883.jpg"
   },
@@ -276,7 +276,7 @@ const GAMES_DATABASE = [
     duration: "45-60 min",
     category: "Social Deduction / Ruoli",
     difficulty: "Medio",
-    tags: ["Grandi Gruppi", "Bluff", "Ruoli Segreti", "Lupi"],
+    tags: ["Grandi Gruppi", "Bluff", "Ruoli Segreti", "A squadre", "Competitivo", "Lupi"],
     description: "La versione più profonda e strategica del celebre gioco dei Lupi (conosciuto anche come Lupi nel Villaggio o Lupus in Tabula). Ruoli complessi con poteri magici e agende segrete in continua evoluzione.",
     image: "https://cf.geekdo-images.com/GdhIy9XhacYI5czt-1dDHw__opengraph/img/awoeTKclHcaqIkX8ZwDQ-kfYEYE=/0x320:406x533/fit-in/1200x630/filters:strip_icc()/pic590726.jpg"
   },
@@ -287,7 +287,7 @@ const GAMES_DATABASE = [
     duration: "15-30 min",
     category: "Party / Musica",
     difficulty: "Facile",
-    tags: ["Musica", "Trivia", "Adatto a tutti"],
+    tags: ["Musica", "Trivia", "Tutti contro tutti", "Competitivo", "Adatto a tutti"],
     description: "Un divertentissimo party game musicale in cui devi ascoltare canzoni e sfidare i tuoi amici a indovinare il titolo, l'artista o l'anno di uscita.",
     image: "https://cf.geekdo-images.com/YEtRmPX2TJFSjEQSLUjk1A__opengraph/img/mWyoxstfnEFKSZKvYSEpOHWi5N8=/0x233:767x635/fit-in/1200x630/filters:strip_icc()/pic9335600.jpg"
   },
@@ -298,8 +298,8 @@ const GAMES_DATABASE = [
     duration: "20-30 min",
     category: "Party / Quiz",
     difficulty: "Facile",
-    tags: ["Quiz", "Generazioni", "Divertente"],
-    description: "Un gioco di carte e domande generazionali: chi sarà il vero 'boomer' del tavolo? Metti alla prova la tua conoscenza della cultura pop di ieri e di oggi!",
+    tags: ["Quiz", "Generazioni", "Tutti contro tutti", "Competitivo", "Divertente"],
+    description: "Un gioco di carte e domande generazionali: chi sarà le il vero 'boomer' del tavolo? Metti alla prova la tua conoscenza della cultura pop di ieri e di oggi!",
     image: "https://www.giocabenesrl.it/images/articoli/dem/large/80342-1.jpg"
   },
   {
@@ -309,7 +309,7 @@ const GAMES_DATABASE = [
     duration: "60-90 min",
     category: "Strategia / Vichinghi",
     difficulty: "Difficile",
-    tags: ["Controllo Territorio", "Combattimento", "Drafting"],
+    tags: ["Controllo Territorio", "Combattimento", "Drafting", "Tutti contro tutti", "Competitivo"],
     description: "Il Ragnarök è giunto! Guida il tuo clan vichingo in gloriose battaglie, conquiste e mostruose evocazioni prima che il mondo venga distrutto. Un capolavoro di strategia e miniature.",
     image: "https://cf.geekdo-images.com/HkZSJfQnZ3EpS214xtuplg__opengraph/img/-e_Ivk4UX6zI34BX1b0jTlYtBvM=/0x0:2000x1050/fit-in/1200x630/filters:strip_icc()/pic2439223.jpg"
   },
@@ -331,7 +331,7 @@ const GAMES_DATABASE = [
     duration: "30-60 min",
     category: "GDR / Carte",
     difficulty: "Facile",
-    tags: ["Ruolo", "Narrativo", "Introduzione"],
+    tags: ["Ruolo", "Narrativo", "Cooperativo", "Introduzione"],
     description: "L'introduzione perfetta ai giochi di ruolo! Un gioco di carte rapido e narrativo in cui potrai interpretare guerrieri e maghi, affrontare prove folli e creare una storia unica insieme al tuo tavolo.",
     image: "https://cf.geekdo-images.com/xo92oTvkLilbRkg34JgSUA__opengraph/img/C_nTk1td4c9U4M1IQtMSUHFVIKA=/0x53:536x334/fit-in/1200x630/filters:strip_icc()/pic7336321.jpg"
   },
@@ -342,7 +342,7 @@ const GAMES_DATABASE = [
     duration: "30-45 min",
     category: "Party / Parole",
     difficulty: "Facile",
-    tags: ["Parole", "Creativo", "Classico"],
+    tags: ["Parole", "Creativo", "Tutti contro tutti", "Competitivo", "Classico"],
     description: "Il grande classico dei giochi di parole (noto anche come Scattergories). Lancia il dado per scegliere una lettera, gira la clessidra e trova risposte creative per ciascuna categoria prima che finisca il tempo!",
     image: "https://cf.geekdo-images.com/eIL4hvMb7ZPgizc7BZOh-g__opengraph/img/tqk_R1HuGTnXK5MfgFqMaLv9LQI=/0x225:779x634/fit-in/1200x630/filters:strip_icc()/pic4994410.jpg"
   },
@@ -353,7 +353,7 @@ const GAMES_DATABASE = [
     duration: "30-60 min",
     category: "Strategia / Carte",
     difficulty: "Medio",
-    tags: ["Combattimento", "Magia", "Animali"],
+    tags: ["Combattimento", "Magia", "Tutti contro tutti", "Competitivo", "Animali"],
     description: "Scegli il tuo simpatico personaggio animale, esplora la mappa per raccogliere risorse e impara potenti incantesimi. Trasformati nella tua forma d'ombra per eliminare i tuoi avversari in questo magico gioco di combattimento.",
     image: "https://cf.geekdo-images.com/LJPwDepTwwbg-cZZLilNQA__opengraph/img/bU8ZKQC0Iag4QSO5Zc9DL5zRwO8=/0x438:600x753/fit-in/1200x630/filters:strip_icc()/pic7507783.jpg"
   },
@@ -364,7 +364,7 @@ const GAMES_DATABASE = [
     duration: "30-60 min",
     category: "Strategia / Carte",
     difficulty: "Medio",
-    tags: ["Eroi", "Mostri", "Bastardo"],
+    tags: ["Eroi", "Mostri", "Tutti contro tutti", "Competitivo", "Bastardo"],
     description: "Crea una squadra di adorabili e letali eroi, affronta temibili mostri e sabota i tuoi avversari! Dai creatori di Unstable Unicorns, un gioco di carte fantasy competitivo, spietato ed estremamente dinamico.",
     image: "https://cf.geekdo-images.com/ozUv3be9fcf28tJk30bNow__opengraph/img/rPK-gZ7Yd385Ah2pp6RDui3l15g=/0x134:900x606/fit-in/1200x630/filters:strip_icc()/pic5181432.jpg"
   },
