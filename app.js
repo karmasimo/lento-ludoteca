@@ -367,6 +367,28 @@ const GAMES_DATABASE = [
     tags: ["Eroi", "Mostri", "Bastardo"],
     description: "Crea una squadra di adorabili e letali eroi, affronta temibili mostri e sabota i tuoi avversari! Dai creatori di Unstable Unicorns, un gioco di carte fantasy competitivo, spietato ed estremamente dinamico.",
     image: "https://cf.geekdo-images.com/ozUv3be9fcf28tJk30bNow__opengraph/img/rPK-gZ7Yd385Ah2pp6RDui3l15g=/0x134:900x606/fit-in/1200x630/filters:strip_icc()/pic5181432.jpg"
+  },
+  {
+    id: "cthulhu-death-may-die",
+    title: "Cthulhu: Death May Die",
+    players: { min: 1, max: 5 },
+    duration: "90-120 min",
+    category: "Cooperativo / Avventura",
+    difficulty: "Difficile",
+    tags: ["Cooperativo", "Follia", "Avventura", "Lovecraft"],
+    description: "Un frenetico gioco cooperativo in cui dovrete impersonare investigatori negli anni '20 pronti a tutto pur di evocare e sconfiggere i Grandi Antichi prima che distruggano il mondo.",
+    image: "https://cf.geekdo-images.com/opengraph/social/pic4705171.jpg"
+  },
+  {
+    id: "aeons-end",
+    title: "Aeon's End",
+    players: { min: 1, max: 4 },
+    duration: "60 min",
+    category: "Cooperativo / Strategia",
+    difficulty: "Difficile",
+    tags: ["Cooperativo", "Deckbuilding", "Strategia", "Fantasy"],
+    description: "Difendi Gravehold, l'ultimo avamposto dell'umanità, dagli Invasori Senza Nome. Un gioco cooperativo di carte in stile deckbuilding senza mescolamento del mazzo.",
+    image: "https://cf.geekdo-images.com/opengraph/social/pic2949101.jpg"
   }
 ];
 
