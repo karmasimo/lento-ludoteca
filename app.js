@@ -392,6 +392,8 @@ const difficultyFilter = document.getElementById("filter-difficulty");
 const gameModal = document.getElementById("game-modal");
 const closeModalBtn = document.getElementById("close-modal");
 const bookingForm = document.getElementById("booking-form");
+const toggleFiltersBtn = document.getElementById("toggle-filters-btn");
+const dropdownsRow = document.querySelector(".dropdowns-row");
 
 // Render Games Card Grid
 function renderGames(games) {
@@ -539,6 +541,13 @@ function closeGameModal() {
 }
 
 // Event Listeners for Filters
+if (toggleFiltersBtn && dropdownsRow) {
+  toggleFiltersBtn.addEventListener("click", () => {
+    const isShowing = dropdownsRow.classList.toggle("show-filters");
+    toggleFiltersBtn.classList.toggle("active", isShowing);
+  });
+}
+
 searchInput.addEventListener("input", (e) => {
   activeFilters.search = e.target.value;
   applyFilters();
