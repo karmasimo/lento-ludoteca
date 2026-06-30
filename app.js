@@ -377,7 +377,7 @@ const GAMES_DATABASE = [
     difficulty: "Difficile",
     tags: ["Cooperativo", "Follia", "Avventura", "Lovecraft"],
     description: "Un frenetico gioco cooperativo in cui dovrete impersonare investigatori negli anni '20 pronti a tutto pur di evocare e sconfiggere i Grandi Antichi prima che distruggano il mondo.",
-    image: "https://cf.geekdo-images.com/opengraph/social/pic4705171.jpg"
+    image: "https://cf.geekdo-images.com/e8D09pfFsUsoX1D81EeoZg__itemrep/img/Ki4B-y6Am9t18ErzhjSw_L8tKDY=/fit-in/246x300/filters:strip_icc()/pic4705171.jpg"
   },
   {
     id: "aeons-end",
@@ -388,7 +388,7 @@ const GAMES_DATABASE = [
     difficulty: "Difficile",
     tags: ["Cooperativo", "Deckbuilding", "Strategia", "Fantasy"],
     description: "Difendi Gravehold, l'ultimo avamposto dell'umanità, dagli Invasori Senza Nome. Un gioco cooperativo di carte in stile deckbuilding senza mescolamento del mazzo.",
-    image: "https://cf.geekdo-images.com/opengraph/social/pic2949101.jpg"
+    image: "https://cf.geekdo-images.com/d50LceHj6LIafa4S_qIsCg__itemrep/img/Uswnuak6armCO4JWTi5_03kl0eo=/fit-in/246x300/filters:strip_icc()/pic3189350.jpg"
   }
 ];
 
