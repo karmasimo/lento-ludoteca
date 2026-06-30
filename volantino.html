@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <title>Volantino Instagram Bar Lento</title>
-  <!-- Google Fonts: Outfit (bold title), Cormorant Garamond (elegant serif), Satisfy (beautiful script), Inter (clean metadata) -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&family=Inter:wght@400;500;600&family=Outfit:wght@800;900&family=Satisfy&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&family=Inter:wght@400;500;600;700&family=Outfit:wght@800;900&family=Satisfy&display=swap" rel="stylesheet">
   <style>
     :root {
-      --color-bg: #faf8f2; /* Warm paper / linen cream */
+      --color-bg: #faf8f2; /* Warm paper cream */
       --color-accent: #e05a47; /* Terracotta */
-      --color-accent-sage: #536a5c; /* Modern Canva Sage Green */
+      --color-accent-sage: #536a5c; /* Sage Green */
       --color-text-dark: #1e293b;
       --color-text-muted: #64748b;
       --font-display: 'Outfit', sans-serif;
@@ -46,48 +46,48 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 85px;
+      padding: 70px 75px 60px 75px;
       box-shadow: 0 40px 80px rgba(30, 41, 59, 0.25);
     }
 
-    /* Fine elegant inset border */
+    /* Inset frame border */
     .inset-frame {
       position: absolute;
-      top: 30px;
-      left: 30px;
-      right: 30px;
-      bottom: 30px;
-      border: 1.5px solid rgba(224, 90, 71, 0.15);
+      top: 25px;
+      left: 25px;
+      right: 25px;
+      bottom: 25px;
+      border: 1.5px solid rgba(224, 90, 71, 0.12);
       pointer-events: none;
       z-index: 10;
     }
 
-    /* Background blobs & organic spots */
+    /* Organic Background Glows */
     .organic-blob-1 {
       position: absolute;
-      top: -100px;
-      right: -100px;
-      width: 500px;
-      height: 500px;
+      top: -50px;
+      right: -50px;
+      width: 450px;
+      height: 450px;
       border-radius: 50%;
-      background-color: rgba(224, 90, 71, 0.04);
+      background-color: rgba(224, 90, 71, 0.03);
       filter: blur(80px);
       z-index: 1;
     }
 
     .organic-blob-2 {
       position: absolute;
-      bottom: -150px;
-      left: -150px;
-      width: 650px;
-      height: 650px;
+      bottom: -100px;
+      left: -100px;
+      width: 550px;
+      height: 550px;
       border-radius: 50%;
-      background-color: rgba(83, 106, 92, 0.05);
+      background-color: rgba(83, 106, 92, 0.04);
       filter: blur(90px);
       z-index: 1;
     }
 
-    /* Graphic game elements floating with transparency & modern styling */
+    /* Graphic game elements floating with transparency */
     .graphic-element {
       position: absolute;
       fill: currentColor;
@@ -96,30 +96,30 @@
     }
 
     .meeple-giant {
-      bottom: -40px;
-      right: -20px;
-      width: 320px;
-      height: 320px;
-      color: rgba(224, 90, 71, 0.045);
-      transform: rotate(-12deg);
+      bottom: 40px;
+      right: -30px;
+      width: 280px;
+      height: 280px;
+      color: rgba(224, 90, 71, 0.035);
+      transform: rotate(-10deg);
     }
 
     .dice-d20 {
-      top: 10%;
-      left: 8%;
-      width: 140px;
-      height: 140px;
-      color: rgba(83, 106, 92, 0.15);
-      transform: rotate(20deg);
+      top: 28%;
+      right: 15%;
+      width: 100px;
+      height: 100px;
+      color: rgba(83, 106, 92, 0.12);
+      transform: rotate(18deg);
     }
 
     .playing-cards {
-      top: 40%;
-      right: 6%;
-      width: 130px;
-      height: 130px;
-      color: rgba(224, 90, 71, 0.12);
-      transform: rotate(-15deg);
+      bottom: 25%;
+      right: 8%;
+      width: 110px;
+      height: 110px;
+      color: rgba(224, 90, 71, 0.1);
+      transform: rotate(-12deg);
     }
 
     /* Content layers */
@@ -136,67 +136,47 @@
     .top-row {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
       width: 100%;
     }
 
     .presenter-tag {
       font-family: var(--font-display);
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 900;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.2em;
       color: var(--color-accent-sage);
       text-transform: uppercase;
-      margin-top: 15px;
     }
 
-    /* Circular Canva-style Stamp */
-    .stamp-badge {
-      width: 110px;
-      height: 110px;
-      border: 2px dashed var(--color-accent);
-      border-radius: 50%;
+    /* Split Main Layout */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 310px;
+      gap: 50px;
+      margin-top: 10px;
+      margin-bottom: auto;
+    }
+
+    .left-column {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
-      transform: rotate(12deg);
-      background-color: var(--color-bg);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.02);
-    }
-
-    .stamp-text-1 {
-      font-family: var(--font-display);
-      font-size: 14px;
-      font-weight: 900;
-      color: var(--color-accent);
-      letter-spacing: 0.05em;
-    }
-
-    .stamp-text-2 {
-      font-family: var(--font-serif);
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--color-text-dark);
-      line-height: 1;
-      margin: 2px 0;
     }
 
     /* Main Typography Block */
     .title-block {
-      margin-top: -20px;
-      margin-bottom: 20px;
       position: relative;
+      margin-bottom: 25px;
     }
 
     .pre-title {
       font-family: var(--font-serif);
-      font-size: 48px;
+      font-size: 42px;
       font-style: italic;
       color: var(--color-accent);
       line-height: 1;
-      margin-bottom: 10px;
-      padding-left: 10px;
+      margin-bottom: 5px;
     }
 
     .main-title-container {
@@ -206,7 +186,7 @@
 
     .main-title-lento {
       font-family: var(--font-display);
-      font-size: 180px;
+      font-size: 155px;
       font-weight: 900;
       line-height: 0.8;
       letter-spacing: -0.04em;
@@ -215,44 +195,101 @@
 
     .main-title-script {
       font-family: var(--font-script);
-      font-size: 130px;
+      font-size: 110px;
       color: var(--color-accent);
       position: absolute;
-      bottom: -65px;
-      left: 140px;
-      transform: rotate(-7deg);
-      text-shadow: 0 4px 12px rgba(250, 248, 242, 0.9), 0 2px 4px rgba(250, 248, 242, 0.9);
+      bottom: -50px;
+      left: 120px;
+      transform: rotate(-6deg);
+      text-shadow: 0 4px 10px rgba(250, 248, 242, 0.9), 0 2px 4px rgba(250, 248, 242, 0.9);
       white-space: nowrap;
     }
 
-    /* Rotated Sticker/Tape */
+    /* Rotated Sticker Tape */
     .sticker-tape {
       background-color: var(--color-accent-sage);
       color: var(--color-bg);
       font-family: var(--font-display);
-      font-size: 34px;
+      font-size: 30px;
       font-weight: 900;
       letter-spacing: 0.08em;
-      padding: 12px 35px;
-      transform: rotate(-4deg);
+      padding: 10px 30px;
+      transform: rotate(-3deg);
       display: inline-block;
-      margin-top: 110px;
-      box-shadow: 4px 8px 20px rgba(83, 106, 92, 0.25);
+      margin-top: 90px;
+      box-shadow: 4px 8px 20px rgba(83, 106, 92, 0.2);
     }
 
-    /* Logo and Subtitle Section */
-    .middle-section {
+    /* Information Features List (Canva Checklists) */
+    .info-features {
+      margin-top: 35px;
       display: flex;
       flex-direction: column;
-      gap: 30px;
-      max-width: 620px;
-      margin-top: 20px;
+      gap: 20px;
     }
 
-    .logo-row {
+    .feature-item {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 15px;
+      border-bottom: 1px dashed rgba(30, 41, 59, 0.1);
+      padding-bottom: 15px;
+    }
+
+    .feature-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .feature-num {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--color-accent);
+      background-color: rgba(224, 90, 71, 0.08);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .feature-text h4 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--color-text-dark);
+      margin-bottom: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .feature-text p {
+      font-size: 16px;
+      color: var(--color-text-muted);
+      line-height: 1.3;
+    }
+
+    /* Right Column: Logo, Stamp, Cozy description */
+    .right-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      border-left: 1px solid rgba(30, 41, 59, 0.08);
+      padding-left: 40px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
     }
 
     .bar-lento-logo-graphic {
@@ -268,41 +305,74 @@
 
     .bar-lento-logo-label {
       font-family: var(--font-display);
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 900;
       letter-spacing: 0.15em;
       color: var(--color-text-dark);
       text-transform: uppercase;
-      border-left: 2px solid var(--color-accent);
-      padding-left: 15px;
-      line-height: 1.2;
     }
 
-    .flyer-desc {
+    /* Circular Dotted Stamp */
+    .stamp-badge {
+      width: 130px;
+      height: 130px;
+      border: 2px dashed var(--color-accent);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: rotate(10deg);
+      background-color: var(--color-bg);
+      box-shadow: 0 8px 20px rgba(224, 90, 71, 0.05);
+      margin: 30px 0;
+    }
+
+    .stamp-title {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--color-accent-sage);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .stamp-main {
       font-family: var(--font-serif);
-      font-size: 32px;
-      font-weight: 500;
-      line-height: 1.35;
-      color: var(--color-text-dark);
-      font-style: italic;
-    }
-
-    .flyer-desc strong {
-      font-family: var(--font-body);
       font-size: 26px;
-      font-weight: 800;
-      font-style: normal;
-      color: var(--color-accent);
+      font-weight: 700;
+      color: var(--color-text-dark);
+      line-height: 1.1;
+      margin: 2px 0;
+      text-align: center;
     }
 
-    /* Footer: Canva Style minimal link */
+    .stamp-sub {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .cozy-intro {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-style: italic;
+      color: var(--color-text-dark);
+      text-align: center;
+      line-height: 1.35;
+    }
+
+    /* Footer Section */
     .footer-section {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
       width: 100%;
       border-top: 1.5px solid rgba(30, 41, 59, 0.08);
-      padding-top: 35px;
+      padding-top: 25px;
     }
 
     .footer-left {
@@ -313,7 +383,7 @@
 
     .footer-tagline {
       font-family: var(--font-display);
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 900;
       letter-spacing: 0.1em;
       color: var(--color-text-muted);
@@ -322,7 +392,7 @@
 
     .footer-link {
       font-family: var(--font-display);
-      font-size: 36px;
+      font-size: 38px;
       font-weight: 900;
       color: var(--color-text-dark);
       letter-spacing: -0.01em;
@@ -336,19 +406,32 @@
     }
 
     .footer-link svg {
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       fill: none;
       stroke: var(--color-accent);
       stroke-width: 3;
     }
 
     .footer-right-details {
-      font-family: var(--font-serif);
-      font-size: 22px;
-      font-style: italic;
-      color: var(--color-text-muted);
       text-align: right;
+    }
+
+    .address-text {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-style: italic;
+      color: var(--color-text-dark);
+    }
+
+    .sub-address-text {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      margin-top: 3px;
     }
   </style>
 </head>
@@ -369,7 +452,7 @@
     </svg>
 
     <!-- D20 Outline -->
-    <svg class="graphic-element dice-d20" viewBox="0 0 100 100" stroke="currentColor" stroke-width="2" fill="none">
+    <svg class="graphic-element dice-d20" viewBox="0 0 100 100" stroke="currentColor" stroke-width="1.8" fill="none">
       <polygon points="50,5 90,30 90,70 50,95 10,70 10,30" />
       <polygon points="50,5 50,95" />
       <polygon points="10,30 90,30" />
@@ -380,69 +463,95 @@
       <line x1="50" y1="62" x2="10" y2="70" />
       <line x1="50" y1="62" x2="90" y2="70" />
       <line x1="50" y1="62" x2="50" y2="95" />
-      <polygon points="50,38 10,70 50,62" />
-      <polygon points="50,38 90,70 50,62" />
     </svg>
 
     <!-- Playing Cards Outline -->
-    <svg class="graphic-element playing-cards" viewBox="0 0 100 100" stroke="currentColor" stroke-width="2.5" fill="none">
+    <svg class="graphic-element playing-cards" viewBox="0 0 100 100" stroke="currentColor" stroke-width="2" fill="none">
       <rect x="20" y="15" width="45" height="65" rx="6" transform="rotate(-12 42.5 47.5)" />
       <rect x="35" y="20" width="45" height="65" rx="6" transform="rotate(8 57.5 52.5)" fill="var(--color-bg)" />
-      <circle cx="58" cy="53" r="7" fill="currentColor" transform="rotate(8 57.5 52.5)" />
+      <circle cx="58" cy="53" r="6" fill="currentColor" transform="rotate(8 57.5 52.5)" />
     </svg>
 
     <div class="content-wrapper">
       <!-- Top Row -->
       <div class="top-row">
         <span class="presenter-tag">Delirimedia & Altroego</span>
-        
-        <!-- Canva Dotted Circular Stamp -->
-        <div class="stamp-badge">
-          <span class="stamp-text-1">PLAYSTATION</span>
-          <span class="stamp-text-2">GdT</span>
-          <span class="stamp-text-1">& GDR</span>
-        </div>
       </div>
 
-      <!-- Main Title Block -->
-      <div class="title-block">
-        <div class="pre-title">il giovedì sera è...</div>
-        <div class="main-title-container">
-          <div class="main-title-lento">LENTO</div>
-          <div class="main-title-script">game night</div>
-        </div>
-        
-        <!-- Rotated paper tape banner -->
-        <div>
-          <div class="sticker-tape">
-            OGNI GIOVEDÌ SERA
+      <!-- Main Layout Grid -->
+      <div class="main-grid">
+        <!-- Left: Text content -->
+        <div class="left-column">
+          <div class="title-block">
+            <div class="pre-title">il giovedì sera è...</div>
+            <div class="main-title-container">
+              <div class="main-title-lento">LENTO</div>
+              <div class="main-title-script">game night</div>
+            </div>
+            <div>
+              <div class="sticker-tape">
+                OGNI GIOVEDÌ · DALLE 20:30
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <!-- Middle: Logo and Cozy Description -->
-      <div class="middle-section">
-        <div class="logo-row">
-          <div class="bar-lento-logo-graphic">
-            <svg viewBox="0 0 1703 805" fill="currentColor">
-              <path d="M556.34,392l2.54,11.46c-1.74,71.27,2.16,142.86,0,214.09-.09,3-1.02,5.53-1.04,8.45l4.54-.94c67.34-64.34,135.43-127.78,203.4-191.54,11.64-10.92,22.95-23.6,34.96-34.03,2.47-2.14,7.76-6.98,10.57-7.43,148.89.98,298.02-1.04,446.77-1.1,147.27-.06,294.49,1.27,441.76,1.01,1.4.33,1.63,4.27,1.71,5.5,1.56,22.71-.85,47.65-.53,70.56l-2.46,1.54-860.06-.3c-9.02,6.03-15.82,14.88-23.72,22.27-108.71,101.71-216.83,204.61-325.03,306.88-1.18,1.11-2.83,2.1-4.38,2.62l-2.51-331.02H4.5c-1.43-.88-1.38-1.99-1.55-3.45-1.82-15.55.25-37.66.1-54.09-.04-4.49-1.79-13.86-.59-17.51.38-1.17,1.17-2.12,2.04-2.95h551.84Z"/>
-              <path d="M1205.15,4l69.99,180.01c3.79,1.27,1.46-8.42,1.44-9.47-.91-55.78.4-111.86.5-167.59l2.05-2.95h46.99l1.5,1.5v315.5c-1.83.46-3.53.9-5.45,1.05-9.83.77-27.3.83-37.08,0-1.82-.16-3.67-.15-5.22-1.27l-69.21-176.28-2,1.01v175.5h-50.99V5.5l1.5-1.5h45.99Z"/>
-              <path d="M4,5.5l3.45-1.55c51.35,2.07,124.38-13.16,147.99,47.07,7.51,19.16,9.04,64.5-1.66,82.3l-20.87,21.16c3.36,5.2,9.11,7.52,13.57,12.5,19.87,22.26,18.41,84.25,7.34,110.37-24,56.66-97.05,42.9-146.36,44.69-3.84-.44-3.45-.92-3.45-3.55V5.5ZM55.23,131.75c1.58,1.81,21.54,1.58,25.29,1.28,19.94-1.56,30.34-11.73,32.33-31.66,2.15-21.48-.91-43.77-24.82-49.92-6.28-1.62-24.36-2.57-30.54-1.45-1.11.2-1.9.51-2.43,1.57l.17,80.18ZM54.98,273h29.49c3.11,0,13.64-4.53,16.43-6.56,8.58-6.25,11.41-19.82,12.1-29.89,1-14.58,1.24-43.38-10.52-53.56-7.23-6.25-34.57-8.16-44.06-7.04-3.61.42-4.07,2.14-4.46,5.54,1.71,27.95-2.21,58.42-.03,86.07.15,1.93.59,3.62,1.05,5.45Z"/>
-              <path d="M388.89,5c1.83-.46,3.53-.9,5.45-1.05,23.63-1.86,74.15-2.01,96.77,2.3,68.57,13.07,81.57,118.86,37.27,159.77-3.51,3.24-12.52,8.17-14.52,10.48-.81.93-1.29,1.55-1,2.87l50.84,140.3-1.35,2.32h-48.99c-.69,0-3.97-1.54-4.3-2.7l-42.14-127.85-2.55-3.45h-23.99l-1.5,1.5v131l-1.5,1.5h-45.99c-.18,0-2.5-2.32-2.5-2.5V5ZM439.87,50c.55,1.28-1,2.96-1,3.5v90l1.5,1.5h29.99c7.42,0,19.97-5.45,24.49-11.5,9.26-12.38,9.84-56.25,2.21-69.21-4.85-8.23-17.36-14.29-26.7-14.29h-30.49Z"/>
-              <path d="M1617.36,1.27c42.38-1.53,80.7,29.3,84.19,72.19,4.62,56.76-3.56,119.67,0,177.08-6.54,97.89-158.04,98.39-164.04,0-3.69-60.52,1.83-126.01,1.3-186.79,7.56-37.57,41.03-61.13,78.54-62.49ZM1614.31,50.28c-12.78,1.46-23.57,10.37-25.69,23.3l-.12,174.95c1.23,33.78,52.61,36.98,60.96,5.9l.1-179.98c-2.03-18.17-18.31-26.11-35.25-24.18Z"/>
-              <path d="M177.45,322c-.73-.22-1.56-1.59-1.53-2.49L250.62,6.27l.97-1.35c2.07-1.33,32.38-1.42,36.89-.97,2.06.21,3.8-.08,4.9,2.1l74.38,314.81c-.76.1-2,1.15-2.36,1.15h-44.99c-.19,0-2.18-1.19-2.48-1.52l-14.98-65.02-62.08-.02-13.77,64.16c.02,1.09-2.03,2.4-2.67,2.4h-46.99ZM292.92,208c-4.11-25.01-9.12-50.16-14.49-75.01-.72-3.35-4.96-24.89-7.01-24.97l-20.49,99.98h41.99Z"/>
-              <path d="M1131.67,4v46h-92.47l-1.5,1.5v86l1.5,1.5h78.98l1.5,1.5v41c0,.38-2.27,3.5-2.5,3.5h-79.48v86.5l1.5,1.5h92.47v49h-142.46c-.28,0-2.73-1.55-3-2V6.02c.24-.47,1.83-2.02,2-2.02h143.46Z"/>
-              <path d="M1515.56,50h-53.48l-1.5,1.5v269.5h-50.99V52.5c0-.18-2.32-2.5-2.5-2.5h-51.99l-1.5-1.5V7.5c0-.54,1.55-2.22,1-3.5h159.45l1.5,1.5v44.5Z"/>
-              <path d="M863.75,5v266.5l1.5,1.5h90.97l1.5,1.5v47.5h-143.46c-4.86-4.72-1.56-11.71-1.45-17.45,1.89-98.96-1.48-198.12-.1-297.1l1.55-3.45h46.99c.33,0,1.52,1.32,2.5,1Z"/>
-            </svg>
+          <!-- Feature checklists -->
+          <div class="info-features">
+            <div class="feature-item">
+              <div class="feature-num">01</div>
+              <div class="feature-text">
+                <h4>Giochi da Tavolo</h4>
+                <p>Ludoteca condivisa: gioca con i nostri titoli o porta i tuoi da casa.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-num">02</div>
+              <div class="feature-text">
+                <h4>Giochi di Ruolo</h4>
+                <p>Notti speciali con master dedicati e sessioni One-Shot pronte all'uso.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-num">03</div>
+              <div class="feature-text">
+                <h4>Area Playtest</h4>
+                <p>Prova e vota in anteprima i prototipi di giochi da tavolo ancora in sviluppo.</p>
+              </div>
+            </div>
           </div>
-          <div class="bar-lento-logo-label">Bar Lento<br>Rimini</div>
         </div>
-        
-        <p class="flyer-desc">
-          Vieni a scoprire una collezione unica di giochi in scatola. Unisciti a un tavolo, fai nuove amicizie o porta il tuo gruppo.
-          <br><strong>L'ingresso è libero.</strong>
-        </p>
+
+        <!-- Right: Branding, stamp, and small desc -->
+        <div class="right-column">
+          <!-- Logo bar lento -->
+          <div class="logo-container">
+            <div class="bar-lento-logo-graphic">
+              <svg viewBox="0 0 1703 805" fill="currentColor">
+                <path d="M556.34,392l2.54,11.46c-1.74,71.27,2.16,142.86,0,214.09-.09,3-1.02,5.53-1.04,8.45l4.54-.94c67.34-64.34,135.43-127.78,203.4-191.54,11.64-10.92,22.95-23.6,34.96-34.03,2.47-2.14,7.76-6.98,10.57-7.43,148.89.98,298.02-1.04,446.77-1.1,147.27-.06,294.49,1.27,441.76,1.01,1.4.33,1.63,4.27,1.71,5.5,1.56,22.71-.85,47.65-.53,70.56l-2.46,1.54-860.06-.3c-9.02,6.03-15.82,14.88-23.72,22.27-108.71,101.71-216.83,204.61-325.03,306.88-1.18,1.11-2.83,2.1-4.38,2.62l-2.51-331.02H4.5c-1.43-.88-1.38-1.99-1.55-3.45-1.82-15.55.25-37.66.1-54.09-.04-4.49-1.79-13.86-.59-17.51.38-1.17,1.17-2.12,2.04-2.95h551.84Z"/>
+                <path d="M1205.15,4l69.99,180.01c3.79,1.27,1.46-8.42,1.44-9.47-.91-55.78.4-111.86.5-167.59l2.05-2.95h46.99l1.5,1.5v315.5c-1.83.46-3.53.9-5.45,1.05-9.83.77-27.3.83-37.08,0-1.82-.16-3.67-.15-5.22-1.27l-69.21-176.28-2,1.01v175.5h-50.99V5.5l1.5-1.5h45.99Z"/>
+                <path d="M4,5.5l3.45-1.55c51.35,2.07,124.38-13.16,147.99,47.07,7.51,19.16,9.04,64.5-1.66,82.3l-20.87,21.16c3.36,5.2,9.11,7.52,13.57,12.5,19.87,22.26,18.41,84.25,7.34,110.37-24,56.66-97.05,42.9-146.36,44.69-3.84-.44-3.45-.92-3.45-3.55V5.5ZM55.23,131.75c1.58,1.81,21.54,1.58,25.29,1.28,19.94-1.56,30.34-11.73,32.33-31.66,2.15-21.48-.91-43.77-24.82-49.92-6.28-1.62-24.36-2.57-30.54-1.45-1.11.2-1.9.51-2.43,1.57l.17,80.18ZM54.98,273h29.49c3.11,0,13.64-4.53,16.43-6.56,8.58-6.25,11.41-19.82,12.1-29.89,1-14.58,1.24-43.38-10.52-53.56-7.23-6.25-34.57-8.16-44.06-7.04-3.61.42-4.07,2.14-4.46,5.54,1.71,27.95-2.21,58.42-.03,86.07.15,1.93.59,3.62,1.05,5.45Z"/>
+                <path d="M388.89,5c1.83-.46,3.53-.9,5.45-1.05,23.63-1.86,74.15-2.01,96.77,2.3,68.57,13.07,81.57,118.86,37.27,159.77-3.51,3.24-12.52,8.17-14.52,10.48-.81.93-1.29,1.55-1,2.87l50.84,140.3-1.35,2.32h-48.99c-.69,0-3.97-1.54-4.3-2.7l-42.14-127.85-2.55-3.45h-23.99l-1.5,1.5v131l-1.5,1.5h-45.99c-.18,0-2.5-2.32-2.5-2.5V5ZM439.87,50c.55,1.28-1,2.96-1,3.5v90l1.5,1.5h29.99c7.42,0,19.97-5.45,24.49-11.5,9.26-12.38,9.84-56.25,2.21-69.21-4.85-8.23-17.36-14.29-26.7-14.29h-30.49Z"/>
+                <path d="M1617.36,1.27c42.38-1.53,80.7,29.3,84.19,72.19,4.62,56.76-3.56,119.67,0,177.08-6.54,97.89-158.04,98.39-164.04,0-3.69-60.52,1.83-126.01,1.3-186.79,7.56-37.57,41.03-61.13,78.54-62.49ZM1614.31,50.28c-12.78,1.46-23.57,10.37-25.69,23.3l-.12,174.95c1.23,33.78,52.61,36.98,60.96,5.9l.1-179.98c-2.03-18.17-18.31-26.11-35.25-24.18Z"/>
+                <path d="M177.45,322c-.73-.22-1.56-1.59-1.53-2.49L250.62,6.27l.97-1.35c2.07-1.33,32.38-1.42,36.89-.97,2.06.21,3.8-.08,4.9,2.1l74.38,314.81c-.76.1-2,1.15-2.36,1.15h-44.99c-.19,0-2.18-1.19-2.48-1.52l-14.98-65.02-62.08-.02-13.77,64.16c.02,1.09-2.03,2.4-2.67,2.4h-46.99ZM292.92,208c-4.11-25.01-9.12-50.16-14.49-75.01-.72-3.35-4.96-24.89-7.01-24.97l-20.49,99.98h41.99Z"/>
+                <path d="M1131.67,4v46h-92.47l-1.5,1.5v86l1.5,1.5h78.98l1.5,1.5v41c0,.38-2.27,3.5-2.5,3.5h-79.48v86.5l1.5,1.5h92.47v49h-142.46c-.28,0-2.73-1.55-3-2V6.02c.24-.47,1.83-2.02,2-2.02h143.46Z"/>
+                <path d="M1515.56,50h-53.48l-1.5,1.5v269.5h-50.99V52.5c0-.18-2.32-2.5-2.5-2.5h-51.99l-1.5-1.5V7.5c0-.54,1.55-2.22,1-3.5h159.45l1.5,1.5v44.5Z"/>
+                <path d="M863.75,5v266.5l1.5,1.5h90.97l1.5,1.5v47.5h-143.46c-4.86-4.72-1.56-11.71-1.45-17.45,1.89-98.96-1.48-198.12-.1-297.1l1.55-3.45h46.99c.33,0,1.52,1.32,2.5,1Z"/>
+              </svg>
+            </div>
+            <div class="bar-lento-logo-label">Bar Lento</div>
+          </div>
+
+          <!-- Dotted Circular Stamp -->
+          <div class="stamp-badge">
+            <span class="stamp-title">INGRESSO</span>
+            <span class="stamp-main">LIBERO</span>
+            <span class="stamp-sub">dalle 20:30</span>
+          </div>
+
+          <p class="cozy-intro">
+            Vieni da solo o con amici, al tavolo ci pensiamo noi.
+          </p>
+        </div>
       </div>
 
       <!-- Footer Section -->
@@ -458,7 +567,8 @@
           </div>
         </div>
         <div class="footer-right-details">
-          Via Sigismondo 33, Rimini
+          <div class="address-text">Via Bertola 52, Rimini</div>
+          <div class="sub-address-text">Centro Storico</div>
         </div>
       </div>
     </div>
