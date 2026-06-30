@@ -395,13 +395,23 @@ const GAMES_DATABASE = [
 // Configuration
 const WHATSAPP_NUMBER = "393393729188"; // Official booking number
 
+// Dynamic Placeholder for games in development (Playtest)
+const PLAYTEST_PLACEHOLDER = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%"><rect width="400" height="300" fill="%23fcfbf7"/><g stroke="%23e05a47" stroke-width="1.5" fill="none" opacity="0.12"><line x1="0" y1="50" x2="400" y2="50"/><line x1="0" y1="100" x2="400" y2="100"/><line x1="0" y1="150" x2="400" y2="150"/><line x1="0" y1="200" x2="400" y2="200"/><line x1="0" y1="250" x2="400" y2="250"/><line x1="50" y1="0" x2="50" y2="300"/><line x1="100" y1="0" x2="100" y2="300"/><line x1="150" y1="0" x2="150" y2="300"/><line x1="200" y1="0" x2="200" y2="300"/><line x1="250" y1="0" x2="250" y2="300"/><line x1="300" y1="0" x2="300" y2="300"/><line x1="350" y1="0" x2="350" y2="300"/></g><rect x="150" y="60" width="100" height="110" rx="8" fill="none" stroke="%23e05a47" stroke-width="2.5" stroke-dasharray="6 4"/><path d="M200 85 L180 125 L220 125 Z" fill="%23e05a47" opacity="0.85"/><circle cx="200" cy="100" r="14" fill="%23fcfbf7" stroke="%23e05a47" stroke-width="2.5"/><path d="M190 140 H210 M180 150 H220" stroke="%23e05a47" stroke-width="2.5" stroke-linecap="round"/><text x="200" y="220" font-family="'Outfit', sans-serif" font-size="20" font-weight="bold" fill="%231e293b" text-anchor="middle">GIOCO IN SVILUPPO</text><text x="200" y="245" font-family="'Inter', sans-serif" font-size="13" font-weight="500" fill="%2364748b" text-anchor="middle">Playtest %26 Feedback Pubblico</text></svg>`;
+
+function getGameImage(game) {
+  const isPlaytest = game.category.toLowerCase().includes("playtest") || 
+                     game.tags.some(tag => tag.toLowerCase() === "playtest" || tag.toLowerCase() === "in sviluppo" || tag.toLowerCase() === "gioco in sviluppo");
+  return isPlaytest ? PLAYTEST_PLACEHOLDER : game.image;
+}
+
 // App State
 let activeFilters = {
   search: "",
   category: "all",
   players: "any",
   duration: "any",
-  difficulty: "any"
+  difficulty: "any",
+  sort: "alpha-asc"
 };
 
 // Elements
@@ -411,6 +421,7 @@ const categoryFilter = document.getElementById("filter-category");
 const playersFilter = document.getElementById("filter-players");
 const durationFilter = document.getElementById("filter-duration");
 const difficultyFilter = document.getElementById("filter-difficulty");
+const sortFilter = document.getElementById("filter-sort");
 const gameModal = document.getElementById("game-modal");
 const closeModalBtn = document.getElementById("close-modal");
 const bookingForm = document.getElementById("booking-form");
@@ -442,7 +453,7 @@ function renderGames(games) {
     // Create card markup
     card.innerHTML = `
       <div class="card-img-wrapper">
-        <img class="game-img" src="${game.image}" alt="${game.title}" loading="lazy">
+        <img class="game-img" src="${getGameImage(game)}" alt="${game.title}" loading="lazy">
         <span class="game-difficulty-badge ${game.difficulty.toLowerCase()}">${game.difficulty}</span>
       </div>
       <div class="card-content">
@@ -514,6 +525,36 @@ function applyFilters() {
     return matchesSearch && matchesCategory && matchesPlayers && matchesDuration && matchesDifficulty;
   });
   
+  // Apply Custom Sorting (Default: Alphabetical A-Z)
+  filtered.sort((a, b) => {
+    let result = 0;
+    if (activeFilters.sort === "alpha-asc") {
+      result = a.title.localeCompare(b.title);
+    } else if (activeFilters.sort === "alpha-desc") {
+      result = b.title.localeCompare(a.title);
+    } else if (activeFilters.sort === "difficulty-asc") {
+      const difficultyWeights = { "facile": 1, "medio": 2, "difficile": 3 };
+      result = difficultyWeights[a.difficulty.toLowerCase()] - difficultyWeights[b.difficulty.toLowerCase()];
+    } else if (activeFilters.sort === "difficulty-desc") {
+      const difficultyWeights = { "facile": 1, "medio": 2, "difficile": 3 };
+      result = difficultyWeights[b.difficulty.toLowerCase()] - difficultyWeights[a.difficulty.toLowerCase()];
+    } else if (activeFilters.sort === "players-desc") {
+      result = b.players.max - a.players.max;
+    } else if (activeFilters.sort === "duration-asc") {
+      const getMinMinutes = (dur) => {
+        const match = dur.match(/(\d+)/);
+        return match ? parseInt(match[1]) : 0;
+      };
+      result = getMinMinutes(a.duration) - getMinMinutes(b.duration);
+    }
+    
+    // Secondary sorting by Title (A - Z) if values are equal
+    if (result === 0) {
+      return a.title.localeCompare(b.title);
+    }
+    return result;
+  });
+  
   renderGames(filtered);
 }
 
@@ -539,13 +580,14 @@ function openGameModal(game) {
   diffBadge.className = `modal-badge difficulty-badge ${game.difficulty.toLowerCase()}`;
   
   // Image
-  document.getElementById("modal-game-img").src = game.image;
+  const modalImgUrl = getGameImage(game);
+  document.getElementById("modal-game-img").src = modalImgUrl;
   document.getElementById("modal-game-img").alt = game.title;
   
   // Set dynamic background image for premium blur effect
   const modalVisual = document.querySelector(".modal-visual");
   if (modalVisual) {
-    modalVisual.style.setProperty("--bg-image", `url('${game.image}')`);
+    modalVisual.style.setProperty("--bg-image", `url('${modalImgUrl}')`);
   }
   
   // Reset booking form values
@@ -595,6 +637,11 @@ difficultyFilter.addEventListener("change", (e) => {
   applyFilters();
 });
 
+sortFilter.addEventListener("change", (e) => {
+  activeFilters.sort = e.target.value;
+  applyFilters();
+});
+
 // Modal close triggers
 closeModalBtn.addEventListener("click", closeGameModal);
 gameModal.addEventListener("click", (e) => {
@@ -634,7 +681,7 @@ Grazie! Ci vediamo lì! 🎲`;
 
 // Init App
 document.addEventListener("DOMContentLoaded", () => {
-  renderGames(GAMES_DATABASE);
+  applyFilters();
   
   // Setup date picker default (next Thursday)
   const dateInput = document.getElementById("booking-date");
