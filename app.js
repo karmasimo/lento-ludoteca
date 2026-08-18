@@ -593,8 +593,12 @@ function openGameModal(game) {
     modalVisual.style.setProperty("--bg-image", `url('${modalImgUrl}')`);
   }
   
-  // Reset booking form values
+  // Reset booking form values & set initial people count
   bookingForm.reset();
+  const inputPeople = document.getElementById("booking-people");
+  if (inputPeople) {
+    inputPeople.value = "4";
+  }
   
   // Show modal
   gameModal.classList.add("active");
@@ -660,33 +664,125 @@ const GDR_DATABASE = {
     title: "Ombre su Hekto: Omicidio nel Sottolivello",
     genre: "CYBERPUNK NOIR · INVESTIGATIVO",
     master: "Stefano (Staffan Mahad)",
-    playersMax: 3,
-    duration: "~2.5 Ore",
-    system: "d100 Percentuale Snello",
+    playersMax: "Max 3 Giocatori",
     status: "open",
-    lore: `Nei meandri del Sottolivello 600 del pianeta-città Hekto, tra pioggia acida e ologrammi al neon, viene rinvenuto un cadavere appartenente all'alta società. Il corpo è stato mutilato secondo il rituale delle <em>Lame della Corona</em>, una gang di fanatici religiosi.<br><br>Una nobildonna misteriosa nota come <strong>"SS"</strong> ha ingaggiato l'investigatore privato <strong>Staffan Mahad</strong> con una ricompensa da 100.000 corone. Mahad cerca 3 specialisti disposti a tutto pur di incassare la loro fetta prima che il caso venga insabbiato.`,
-    characters: [
-      {
-        name: "Tech-Junkie",
-        icon: "⚡",
-        role: "Hacker & Innestato cybernetico. Maestro nell'infiltrarsi nelle reti neurali e bypassare sistemi di sicurezza digitali e fisici."
-      },
-      {
-        name: "Il Redento",
-        icon: "🎯",
-        role: "Ex veterano militare. Esperto di armi da fuoco, tattica di combattimento e nervi d'acciaio sotto pressione."
-      },
-      {
-        name: "Psionico Non-Sanzionato",
-        icon: "🧠",
-        role: "Dotato di limitata telepatia e psicometria per leggere i ricordi e le sensazioni rimaste impresse sugli oggetti del delitto."
-      },
-      {
-        name: "Deciderò al tavolo con il Master",
-        icon: "🎲",
-        role: "Fai scegliere al Master o decidi al momento in base alle preferenze degli altri giocatori."
-      }
-    ]
+    badges: [
+      "📅 27 Agosto · Ore 20:30",
+      "👤 Master: Stefano",
+      "👥 Max 3 Giocatori",
+      "🎲 Sistema d100 Veloce",
+      "🏙️ Mondo: Hekto (Arcologia)"
+    ],
+    storyTitle: "L'Indagine nel Sottolivello 600 (Cyberpunk Noir)",
+    lore: `
+      <p><strong>L'Ambientazione:</strong> Il pianeta <em>Hekto</em> (della Grande Ecclesia Conciliare) è una mostruosa <strong>ecumenopoli</strong>: un mondo-città infinito dove gigantesche arcologie spiralizzano per decine di chilometri verso il cielo e sprofondano per altrettante profondità nella crosta planetaria. Tra fumo industriale, pioggia acida e pubblicità olografiche al neon in stile <em>Blade Runner</em>, i reietti dei sottolivelli non vedono mai la luce della superficie.</p>
+      <br>
+      <p><strong>Il Caso:</strong> Nei meandri del <strong>Sottolivello 600+</strong>, dove nessuno dall'alto scende mai, viene rinvenuto il cadavere impossibile di un individuo appartenente all'alta società. Il corpo è stato mutilato secondo il rituale delle <strong>Lame della Corona</strong>, una gang di fanatici religiosi spietati e fuori controllo.</p>
+      <br>
+      <p><strong>La Missione:</strong> Una nobildonna bellissima, facoltosa e misteriosa, nota solo come <strong>"SS"</strong>, assolda l'investigatore privato <strong>Staffan Mahad</strong> offrendo una cifra astronomica (100.000 corone, una fortuna incalcolabile per chi vive laggiù). Mahad scende nella feccia a reclutare tre specialisti disposti a tutto pur di incassare la loro fetta prima che il caso venga insabbiato.</p>
+    `,
+    systemTitle: "Come si Gioca: Sistema d100 a Percentuale",
+    systemDetails: `
+      <p>Il sistema è studiato per essere <strong>immediato, veloce e accessibile a tutti</strong>, anche a chi non ha mai aperto un manuale di GDR.</p>
+      <div class="system-mechanics-grid">
+        <div class="mechanic-item">
+          <strong>🎲 Tiro Base d100 (Percentuale)</strong>
+          Per ogni azione tiri 2 dadi da 10 (d100): se il risultato è pari o inferiore alla tua percentuale di abilità, l'azione ha successo!
+        </div>
+        <div class="mechanic-item">
+          <strong>📊 150 Punti Statistica</strong>
+          Distribuisci 150 punti tra le statistiche chiave: <em>Attacco</em>, <em>Parare / Schivare</em>, <em>Medicina</em>, <em>Intuizione & Sensi</em>, <em>Carisma</em>, <em>Concentrazione</em>.
+        </div>
+        <div class="mechanic-item">
+          <strong>🔍 Intuizione & Percezione</strong>
+          Un valore unico che combina vista, udito, fiuto e sesto senso per notare indizi nascosti, trappole e dettagli sulla scena del crimine.
+        </div>
+        <div class="mechanic-item">
+          <strong>💥 Danni & Cure con Dadi Dedicati</strong>
+          Le armi e gli strumenti usano dadi classici: d12 per fucili d'assalto, d20+bonus per armi pesanti, d12/d20 per kit medici e cure.
+        </div>
+      </div>
+    `
+  },
+
+  "tavolo-2": {
+    id: "tavolo-2",
+    title: "Tavolo 2: Avventura Fantasy & Mistero (In Arrivo)",
+    genre: "FANTASY & INVESTIGAZIONE · ONE-SHOT",
+    master: "In definizione (Staff Altroego)",
+    playersMax: "3-4 Giocatori",
+    duration: "~2.5 Ore",
+    system: "Regole Narrative Immediate",
+    status: "pending",
+    badges: [
+      "📅 27 Agosto · Ore 20:30",
+      "👤 Master: In definizione",
+      "👥 Posti da definire",
+      "🎲 Regolamento Snello",
+      "✨ Schede Pre-Generate"
+    ],
+    storyTitle: "Anteprima Narrativa (In Fase di Scrittura)",
+    lore: `
+      <p><strong>Lo Stato del Tavolo:</strong> Il secondo tavolo della nostra One-Shot Night mensile è attualmente in fase di preparazione con il team di Master di Altroego e Bar Lento.</p>
+      <br>
+      <p>Stiamo rifinendo un'avventura autoconclusiva intensa e ricca di suspense, enigmi e scelte morali decisive che metteranno alla prova la coesione del gruppo.</p>
+      <br>
+      <p>Nei prossimi giorni verranno svelati il <strong>titolo ufficiale</strong> e la <strong>sinossi della missione</strong>!</p>
+    `,
+    systemTitle: "Filosofia di Gioco al Bar Lento",
+    systemDetails: `
+      <p>Tutti i tavoli delle nostre serate GDR sono pensati con una filosofia comune: <strong>zero barriere all'ingresso</strong> e massimo divertimento attorno al tavolo.</p>
+      <div class="system-mechanics-grid">
+        <div class="mechanic-item">
+          <strong>☕ Cozy & Conviviale</strong>
+          Si gioca mentre si consuma al bar, in un clima informale e accogliente ideale per fare nuove conoscenze.
+        </div>
+        <div class="mechanic-item">
+          <strong>🎒 Tutto Pronto al Locale</strong>
+          Non serve portare nulla da casa: dadi, schede già pronte, matite e accessori ti aspettano al tavolo.
+        </div>
+      </div>
+    `
+  },
+
+  "tavolo-3": {
+    id: "tavolo-3",
+    title: "Tavolo 3: Avventura Sci-Fi & Spazio (In Arrivo)",
+    genre: "SCI-FI & MISTERO · ONE-SHOT",
+    master: "In definizione (Staff Altroego)",
+    playersMax: "3-4 Giocatori",
+    duration: "~2.5 Ore",
+    system: "Regole Narrative Immediate",
+    status: "pending",
+    badges: [
+      "📅 27 Agosto · Ore 20:30",
+      "👤 Master: In definizione",
+      "👥 Posti da definire",
+      "🎲 Regolamento Snello",
+      "🚀 Esplorazione & Tensione"
+    ],
+    storyTitle: "Anteprima Narrativa (In Fase di Scrittura)",
+    lore: `
+      <p><strong>Lo Stato del Tavolo:</strong> Il terzo tavolo della serata mensile è in cantiere. Un'esperienza immersiva studiata per farti vivere un'avventura cinematografica di 2-3 ore.</p>
+      <br>
+      <p>Il format One-Shot garantisce che la storia inizi e si concluda nella stessa serata, lasciando spazio a improvvisazione, tensione ed emozioni forti.</p>
+      <br>
+      <p>Rimani sintonizzato su questa pagina e sui canali social per scoprire la rivelazione del tavolo!</p>
+    `,
+    systemTitle: "Filosofia di Gioco al Bar Lento",
+    systemDetails: `
+      <p>Regolamento snello basato su tiri chiave e interpretazione condivisa, senza rallentamenti o calcoli complessi.</p>
+      <div class="system-mechanics-grid">
+        <div class="mechanic-item">
+          <strong>🤝 Cooperazione al Tavolo</strong>
+          Il party lavora unito per superare ostacoli, raccogliere indizi e sopravvivere agli imprevisti.
+        </div>
+        <div class="mechanic-item">
+          <strong>👥 Adatto a Neofiti ed Esperti</strong>
+          Il Master guiderà le regole passo dopo passo, lasciando ai giocatori la libertà di decidere cosa fare.
+        </div>
+      </div>
+    `
   }
 };
 
@@ -701,51 +797,55 @@ function openGdrModal(gdrId) {
   
   currentSelectedGdr = gdr;
   
-  // Populate modal data
+  // Populate modal header data
   document.getElementById("gdr-modal-genre").textContent = gdr.genre;
   document.getElementById("gdr-modal-title").textContent = gdr.title;
+  
+  // Badges
+  const badgesContainer = document.querySelector(".gdr-modal-badges");
+  if (badgesContainer && gdr.badges) {
+    badgesContainer.innerHTML = gdr.badges.map(b => `<span class="gdr-pill-badge">${b}</span>`).join("");
+  }
+  
+  // Story & Lore
+  const storyTitleEl = document.getElementById("gdr-modal-story-title");
+  if (storyTitleEl && gdr.storyTitle) storyTitleEl.textContent = gdr.storyTitle;
   document.getElementById("gdr-modal-lore").innerHTML = gdr.lore;
   
-  // Render characters selection list
-  const charsContainer = document.getElementById("gdr-chars-list");
-  if (charsContainer && gdr.characters) {
-    charsContainer.innerHTML = gdr.characters.map((char, index) => `
-      <label class="gdr-char-card ${index === 0 ? 'active-char' : ''}">
-        <input type="radio" name="gdr-character" value="${char.name}" ${index === 0 ? 'checked' : ''}>
-        <div class="char-card-inner">
-          <div class="char-header">
-            <span class="char-icon">${char.icon}</span>
-            <strong>${char.name}</strong>
-          </div>
-          <p class="char-role">${char.role}</p>
-        </div>
-      </label>
-    `).join("");
-    
-    // Add selection styling listener
-    const radioInputs = charsContainer.querySelectorAll('input[name="gdr-character"]');
-    radioInputs.forEach(input => {
-      input.addEventListener('change', () => {
-        charsContainer.querySelectorAll('.gdr-char-card').forEach(card => card.classList.remove('active-char'));
-        input.closest('.gdr-char-card').classList.add('active-char');
-      });
-    });
+  // System Details
+  const systemTitleEl = document.getElementById("gdr-modal-system-title");
+  if (systemTitleEl && gdr.systemTitle) systemTitleEl.textContent = gdr.systemTitle;
+  const systemDescEl = document.getElementById("gdr-modal-system-desc");
+  if (systemDescEl && gdr.systemDetails) systemDescEl.innerHTML = gdr.systemDetails;
+  
+  // Update Booking Form Title & Subtitle based on status
+  const bookingTitleEl = document.getElementById("gdr-booking-title");
+  const bookingSubEl = document.getElementById("gdr-booking-subtitle");
+  const submitBtnEl = document.getElementById("gdr-submit-btn-text");
+  
+  if (gdr.status === "open") {
+    if (bookingTitleEl) bookingTitleEl.textContent = "Prenota un posto per questa One-Shot";
+    if (bookingSubEl) bookingSubEl.innerHTML = "Ti riserveremo il posto al tavolo per la serata di <strong>Giovedì 27 Agosto (ore 20:30)</strong>. La prenotazione è gestita direttamente tramite WhatsApp.";
+    if (submitBtnEl) submitBtnEl.innerHTML = `
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+      Invia Prenotazione su WhatsApp
+    `;
+  } else {
+    if (bookingTitleEl) bookingTitleEl.textContent = "Iscriviti in Lista d'Attesa / Prelazione";
+    if (bookingSubEl) bookingSubEl.innerHTML = "Questo tavolo è in fase di completamento per la serata del <strong>27 Agosto</strong>. Inviaci un messaggio per essere avvisato in anteprima non appena apriranno le prenotazioni.";
+    if (submitBtnEl) submitBtnEl.innerHTML = `
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+      Iscriviti in Lista d'Attesa su WhatsApp
+    `;
   }
   
   if (gdrBookingForm) {
     gdrBookingForm.reset();
     
-    // Set default date for GDR form
+    // Set confirmed event date
     const dateInput = document.getElementById("gdr-booking-date");
     if (dateInput) {
-      const today = new Date();
-      const nextThursday = new Date(today);
-      nextThursday.setDate(today.getDate() + ((4 - today.getDay() + 7) % 7 || 7));
-      const yyyy = nextThursday.getFullYear();
-      const mm = String(nextThursday.getMonth() + 1).padStart(2, "0");
-      const dd = String(nextThursday.getDate()).padStart(2, "0");
-      dateInput.value = `${yyyy}-${mm}-${dd}`;
-      dateInput.min = `${yyyy}-${mm}-${dd}`;
+      dateInput.value = "Giovedì 27 Agosto 2026";
     }
   }
   
@@ -761,11 +861,28 @@ function closeGdrModal() {
   currentSelectedGdr = null;
 }
 
-// Bind GDR modal triggers
+// Bind GDR triggers (both card click and button click)
+document.querySelectorAll(".gdr-card").forEach(card => {
+  card.addEventListener("click", (e) => {
+    const gdrId = card.getAttribute("data-gdr-id");
+    if (gdrId) openGdrModal(gdrId);
+  });
+  
+  // Keyboard access
+  card.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      const gdrId = card.getAttribute("data-gdr-id");
+      if (gdrId) openGdrModal(gdrId);
+    }
+  });
+});
+
 document.querySelectorAll(".open-gdr-modal-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation(); // Avoid double trigger from card
     const gdrId = btn.getAttribute("data-gdr-id");
-    openGdrModal(gdrId);
+    if (gdrId) openGdrModal(gdrId);
   });
 });
 
@@ -779,6 +896,14 @@ if (gdrModal) {
   });
 }
 
+// Global escape key listener to close modals
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeGameModal();
+    closeGdrModal();
+  }
+});
+
 // Form GDR Booking Submit to WhatsApp
 if (gdrBookingForm) {
   gdrBookingForm.addEventListener("submit", (e) => {
@@ -787,32 +912,108 @@ if (gdrBookingForm) {
     if (!currentSelectedGdr) return;
     
     const name = document.getElementById("gdr-booking-name").value.trim();
+    const peopleSelect = document.getElementById("gdr-booking-people");
+    const people = peopleSelect ? peopleSelect.value : "1";
+    const peopleText = peopleSelect ? peopleSelect.options[peopleSelect.selectedIndex].text : `${people} persone`;
     const exp = document.getElementById("gdr-booking-exp").value;
     const time = document.getElementById("gdr-booking-time").value;
-    const date = document.getElementById("gdr-booking-date").value || "prossimo giovedì";
+    const date = "Giovedì 27 Agosto 2026";
     const notes = document.getElementById("gdr-booking-notes") ? document.getElementById("gdr-booking-notes").value.trim() : "";
     
-    const selectedCharInput = document.querySelector('input[name="gdr-character"]:checked');
-    const selectedChar = selectedCharInput ? selectedCharInput.value : "Da definire al tavolo";
+    const isWaitlist = currentSelectedGdr.status !== "open";
     
-    // Build WhatsApp message
-    const textMessage = `Ciao! Vorrei prenotare un posto per la One-Shot GDR al Bar Lento! 🐉
+    // Build WhatsApp message formatted consistently with game booking
+    const textMessage = isWaitlist 
+      ? `Ciao! Vorrei iscrivermi alla lista d'attesa per il GDR al Bar Lento! 🐉
 
-🎲 One-Shot: *${currentSelectedGdr.title}*
-👤 Master: *${currentSelectedGdr.master}*
-🙋 Nome e Cognome: *${name}*
-🎭 Archetipo scelto: *${selectedChar}*
+📌 Tavolo: *${currentSelectedGdr.title}*
+👤 Nome: *${name}*
+👥 Posti richiesti: *${peopleText}*
 ⭐ Esperienza GDR: *${exp}*
-📅 Data serata: *${date}*
+📅 Data evento: *${date}*
+🕒 Orario: *${time}*${notes ? `\n📝 Note: ${notes}` : ""}
+
+Avvisatemi quando apriranno le iscrizioni! Grazie! ✨`
+      : `Ciao! Vorrei prenotare per la serata One-Shot GDR al Bar Lento! 🐉
+
+📌 One-Shot: *${currentSelectedGdr.title}*
+👤 Nome: *${name}*
+👥 Posti: *${peopleText}*
+⭐ Esperienza GDR: *${exp}*
+📅 Data: *${date}*
 🕒 Orario d'arrivo: *${time}*${notes ? `\n📝 Note: ${notes}` : ""}
 
-Grazie! Ci vediamo al tavolo! 🍻✨`;
+Grazie! Ci vediamo giovedì 27 agosto al Lento! 🍻🎲`;
 
     const encodedText = encodeURIComponent(textMessage);
     const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedText}`;
     
-    window.open(waLink, "_blank");
+    // Fallback opening for popup blockers and mobile browsers
+    try {
+      const waWin = window.open(waLink, "_blank");
+      if (!waWin || waWin.closed || typeof waWin.closed === "undefined") {
+        window.location.href = waLink;
+      }
+    } catch (err) {
+      window.location.href = waLink;
+    }
     closeGdrModal();
+  });
+}
+
+// ==========================================================================
+// Header Navigation Tabs Controller (GDR One-Shot vs Giochi da Tavolo)
+// ==========================================================================
+const tabBtnGdr = document.getElementById("tab-btn-gdr");
+const tabBtnGames = document.getElementById("tab-btn-games");
+const gdrSection = document.getElementById("gdr-section");
+const boardGamesFilters = document.getElementById("board-games-catalog");
+const gamesSection = document.querySelector(".games-section");
+
+function switchTab(tab) {
+  if (tab === "gdr") {
+    if (tabBtnGdr) tabBtnGdr.classList.add("active");
+    if (tabBtnGames) tabBtnGames.classList.remove("active");
+    if (gdrSection) gdrSection.style.display = "block";
+    if (boardGamesFilters) boardGamesFilters.style.display = "none";
+    if (gamesSection) gamesSection.style.display = "none";
+  } else {
+    if (tabBtnGames) tabBtnGames.classList.add("active");
+    if (tabBtnGdr) tabBtnGdr.classList.remove("active");
+    if (gdrSection) gdrSection.style.display = "none";
+    if (boardGamesFilters) boardGamesFilters.style.display = "block";
+    if (gamesSection) gamesSection.style.display = "block";
+  }
+}
+
+if (tabBtnGdr) {
+  tabBtnGdr.addEventListener("click", () => switchTab("gdr"));
+}
+
+if (tabBtnGames) {
+  tabBtnGames.addEventListener("click", () => switchTab("games"));
+}
+
+// Stepper Controller for Board Game Booking (People Count)
+const btnPeopleMinus = document.getElementById("btn-people-minus");
+const btnPeoplePlus = document.getElementById("btn-people-plus");
+const inputPeopleEl = document.getElementById("booking-people");
+
+if (btnPeopleMinus && inputPeopleEl) {
+  btnPeopleMinus.addEventListener("click", () => {
+    let val = parseInt(inputPeopleEl.value, 10) || 4;
+    if (val > 1) {
+      inputPeopleEl.value = val - 1;
+    }
+  });
+}
+
+if (btnPeoplePlus && inputPeopleEl) {
+  btnPeoplePlus.addEventListener("click", () => {
+    let val = parseInt(inputPeopleEl.value, 10) || 4;
+    if (val < 30) {
+      inputPeopleEl.value = val + 1;
+    }
   });
 }
 
@@ -823,7 +1024,8 @@ bookingForm.addEventListener("submit", (e) => {
   if (!currentSelectedGame) return;
   
   const name = document.getElementById("booking-name").value.trim();
-  const people = document.getElementById("booking-people").value;
+  const peopleNum = parseInt(document.getElementById("booking-people").value, 10) || 4;
+  const peopleText = peopleNum === 1 ? "1 persona" : `${peopleNum} persone`;
   const time = document.getElementById("booking-time").value;
   const date = document.getElementById("booking-date").value || "prossimo giovedì";
   
@@ -832,7 +1034,7 @@ bookingForm.addEventListener("submit", (e) => {
   
 📌 Gioco: *${currentSelectedGame.title}*
 👤 Nome: *${name}*
-👥 Persone: *${people}*
+👥 Persone: *${peopleText}*
 📅 Data: *${date}*
 🕒 Orario d'arrivo: *${time}*
 
@@ -842,14 +1044,28 @@ Grazie! Ci vediamo lì! 🎲`;
   const encodedText = encodeURIComponent(textMessage);
   const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedText}`;
   
-  // Open in new tab
-  window.open(waLink, "_blank");
+  // Fallback opening for popup blockers and mobile browsers
+  try {
+    const waWin = window.open(waLink, "_blank");
+    if (!waWin || waWin.closed || typeof waWin.closed === "undefined") {
+      window.location.href = waLink;
+    }
+  } catch (err) {
+    window.location.href = waLink;
+  }
   closeGameModal();
 });
 
 // Init App
 document.addEventListener("DOMContentLoaded", () => {
   applyFilters();
+  
+  // Initial view based on hash or default to GDR
+  if (window.location.hash === "#board-games-catalog" || window.location.hash === "#giochi") {
+    switchTab("games");
+  } else {
+    switchTab("gdr");
+  }
   
   // Setup date picker default (next Thursday)
   const dateInput = document.getElementById("booking-date");
