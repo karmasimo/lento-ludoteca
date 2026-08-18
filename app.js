@@ -14,7 +14,7 @@ const GAMES_DATABASE = [
     difficulty: "Medio",
     tags: ["Playtest", "Carte", "Tutti contro tutti", "Competitivo", "Made in Rimini", "Folle"],
     description: "Il nuovo e folle gioco di carte in sviluppo da DELIRIMEDIA. Provalo in anteprima alle Lento Game Nights, partecipa al playtesting pubblico e lascia il tuo feedback!",
-    image: "https://images.unsplash.com/photo-1611195974226-a6a9be9dd763?auto=format&fit=crop&q=80&w=600"
+    image: "deliricard-cover.jpg"
   },
   {
     id: "5-alive",
@@ -399,6 +399,9 @@ const WHATSAPP_NUMBER = "393393729188"; // Official booking number
 const PLAYTEST_PLACEHOLDER = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%"><rect width="400" height="300" fill="%23fcfbf7"/><g stroke="%23e05a47" stroke-width="1.5" fill="none" opacity="0.12"><line x1="0" y1="50" x2="400" y2="50"/><line x1="0" y1="100" x2="400" y2="100"/><line x1="0" y1="150" x2="400" y2="150"/><line x1="0" y1="200" x2="400" y2="200"/><line x1="0" y1="250" x2="400" y2="250"/><line x1="50" y1="0" x2="50" y2="300"/><line x1="100" y1="0" x2="100" y2="300"/><line x1="150" y1="0" x2="150" y2="300"/><line x1="200" y1="0" x2="200" y2="300"/><line x1="250" y1="0" x2="250" y2="300"/><line x1="300" y1="0" x2="300" y2="300"/><line x1="350" y1="0" x2="350" y2="300"/></g><rect x="150" y="60" width="100" height="110" rx="8" fill="none" stroke="%23e05a47" stroke-width="2.5" stroke-dasharray="6 4"/><path d="M200 85 L180 125 L220 125 Z" fill="%23e05a47" opacity="0.85"/><circle cx="200" cy="100" r="14" fill="%23fcfbf7" stroke="%23e05a47" stroke-width="2.5"/><path d="M190 140 H210 M180 150 H220" stroke="%23e05a47" stroke-width="2.5" stroke-linecap="round"/><text x="200" y="220" font-family="'Outfit', sans-serif" font-size="20" font-weight="bold" fill="%231e293b" text-anchor="middle">GIOCO IN SVILUPPO</text><text x="200" y="245" font-family="'Inter', sans-serif" font-size="13" font-weight="500" fill="%2364748b" text-anchor="middle">Playtest %26 Feedback Pubblico</text></svg>`;
 
 function getGameImage(game) {
+  if (game.image && game.image.trim() !== "") {
+    return game.image;
+  }
   const isPlaytest = game.category.toLowerCase().includes("playtest") || 
                      game.tags.some(tag => tag.toLowerCase() === "playtest" || tag.toLowerCase() === "in sviluppo" || tag.toLowerCase() === "gioco in sviluppo");
   return isPlaytest ? PLAYTEST_PLACEHOLDER : game.image;
@@ -648,7 +651,172 @@ gameModal.addEventListener("click", (e) => {
   if (e.target === gameModal) closeGameModal();
 });
 
-// Form Booking Submit to WhatsApp
+// ==========================================================================
+// GDR One-Shots Handling
+// ==========================================================================
+const GDR_DATABASE = {
+  "hekto-cyberpunk": {
+    id: "hekto-cyberpunk",
+    title: "Ombre su Hekto: Omicidio nel Sottolivello",
+    genre: "CYBERPUNK NOIR · INVESTIGATIVO",
+    master: "Stefano (Staffan Mahad)",
+    playersMax: 3,
+    duration: "~2.5 Ore",
+    system: "d100 Percentuale Snello",
+    status: "open",
+    lore: `Nei meandri del Sottolivello 600 del pianeta-città Hekto, tra pioggia acida e ologrammi al neon, viene rinvenuto un cadavere appartenente all'alta società. Il corpo è stato mutilato secondo il rituale delle <em>Lame della Corona</em>, una gang di fanatici religiosi.<br><br>Una nobildonna misteriosa nota come <strong>"SS"</strong> ha ingaggiato l'investigatore privato <strong>Staffan Mahad</strong> con una ricompensa da 100.000 corone. Mahad cerca 3 specialisti disposti a tutto pur di incassare la loro fetta prima che il caso venga insabbiato.`,
+    characters: [
+      {
+        name: "Tech-Junkie",
+        icon: "⚡",
+        role: "Hacker & Innestato cybernetico. Maestro nell'infiltrarsi nelle reti neurali e bypassare sistemi di sicurezza digitali e fisici."
+      },
+      {
+        name: "Il Redento",
+        icon: "🎯",
+        role: "Ex veterano militare. Esperto di armi da fuoco, tattica di combattimento e nervi d'acciaio sotto pressione."
+      },
+      {
+        name: "Psionico Non-Sanzionato",
+        icon: "🧠",
+        role: "Dotato di limitata telepatia e psicometria per leggere i ricordi e le sensazioni rimaste impresse sugli oggetti del delitto."
+      },
+      {
+        name: "Deciderò al tavolo con il Master",
+        icon: "🎲",
+        role: "Fai scegliere al Master o decidi al momento in base alle preferenze degli altri giocatori."
+      }
+    ]
+  }
+};
+
+let currentSelectedGdr = null;
+const gdrModal = document.getElementById("gdr-modal");
+const closeGdrModalBtn = document.getElementById("close-gdr-modal");
+const gdrBookingForm = document.getElementById("gdr-booking-form");
+
+function openGdrModal(gdrId) {
+  const gdr = GDR_DATABASE[gdrId];
+  if (!gdr) return;
+  
+  currentSelectedGdr = gdr;
+  
+  // Populate modal data
+  document.getElementById("gdr-modal-genre").textContent = gdr.genre;
+  document.getElementById("gdr-modal-title").textContent = gdr.title;
+  document.getElementById("gdr-modal-lore").innerHTML = gdr.lore;
+  
+  // Render characters selection list
+  const charsContainer = document.getElementById("gdr-chars-list");
+  if (charsContainer && gdr.characters) {
+    charsContainer.innerHTML = gdr.characters.map((char, index) => `
+      <label class="gdr-char-card ${index === 0 ? 'active-char' : ''}">
+        <input type="radio" name="gdr-character" value="${char.name}" ${index === 0 ? 'checked' : ''}>
+        <div class="char-card-inner">
+          <div class="char-header">
+            <span class="char-icon">${char.icon}</span>
+            <strong>${char.name}</strong>
+          </div>
+          <p class="char-role">${char.role}</p>
+        </div>
+      </label>
+    `).join("");
+    
+    // Add selection styling listener
+    const radioInputs = charsContainer.querySelectorAll('input[name="gdr-character"]');
+    radioInputs.forEach(input => {
+      input.addEventListener('change', () => {
+        charsContainer.querySelectorAll('.gdr-char-card').forEach(card => card.classList.remove('active-char'));
+        input.closest('.gdr-char-card').classList.add('active-char');
+      });
+    });
+  }
+  
+  if (gdrBookingForm) {
+    gdrBookingForm.reset();
+    
+    // Set default date for GDR form
+    const dateInput = document.getElementById("gdr-booking-date");
+    if (dateInput) {
+      const today = new Date();
+      const nextThursday = new Date(today);
+      nextThursday.setDate(today.getDate() + ((4 - today.getDay() + 7) % 7 || 7));
+      const yyyy = nextThursday.getFullYear();
+      const mm = String(nextThursday.getMonth() + 1).padStart(2, "0");
+      const dd = String(nextThursday.getDate()).padStart(2, "0");
+      dateInput.value = `${yyyy}-${mm}-${dd}`;
+      dateInput.min = `${yyyy}-${mm}-${dd}`;
+    }
+  }
+  
+  gdrModal.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeGdrModal() {
+  if (gdrModal) {
+    gdrModal.classList.remove("active");
+  }
+  document.body.style.overflow = "";
+  currentSelectedGdr = null;
+}
+
+// Bind GDR modal triggers
+document.querySelectorAll(".open-gdr-modal-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const gdrId = btn.getAttribute("data-gdr-id");
+    openGdrModal(gdrId);
+  });
+});
+
+if (closeGdrModalBtn) {
+  closeGdrModalBtn.addEventListener("click", closeGdrModal);
+}
+
+if (gdrModal) {
+  gdrModal.addEventListener("click", (e) => {
+    if (e.target === gdrModal) closeGdrModal();
+  });
+}
+
+// Form GDR Booking Submit to WhatsApp
+if (gdrBookingForm) {
+  gdrBookingForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    
+    if (!currentSelectedGdr) return;
+    
+    const name = document.getElementById("gdr-booking-name").value.trim();
+    const exp = document.getElementById("gdr-booking-exp").value;
+    const time = document.getElementById("gdr-booking-time").value;
+    const date = document.getElementById("gdr-booking-date").value || "prossimo giovedì";
+    const notes = document.getElementById("gdr-booking-notes") ? document.getElementById("gdr-booking-notes").value.trim() : "";
+    
+    const selectedCharInput = document.querySelector('input[name="gdr-character"]:checked');
+    const selectedChar = selectedCharInput ? selectedCharInput.value : "Da definire al tavolo";
+    
+    // Build WhatsApp message
+    const textMessage = `Ciao! Vorrei prenotare un posto per la One-Shot GDR al Bar Lento! 🐉
+
+🎲 One-Shot: *${currentSelectedGdr.title}*
+👤 Master: *${currentSelectedGdr.master}*
+🙋 Nome e Cognome: *${name}*
+🎭 Archetipo scelto: *${selectedChar}*
+⭐ Esperienza GDR: *${exp}*
+📅 Data serata: *${date}*
+🕒 Orario d'arrivo: *${time}*${notes ? `\n📝 Note: ${notes}` : ""}
+
+Grazie! Ci vediamo al tavolo! 🍻✨`;
+
+    const encodedText = encodeURIComponent(textMessage);
+    const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedText}`;
+    
+    window.open(waLink, "_blank");
+    closeGdrModal();
+  });
+}
+
+// Form Booking Submit to WhatsApp for Board Games
 bookingForm.addEventListener("submit", (e) => {
   e.preventDefault();
   
@@ -699,3 +867,4 @@ document.addEventListener("DOMContentLoaded", () => {
     dateInput.min = `${yyyy}-${mm}-${dd}`;
   }
 });
+
