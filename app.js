@@ -12,9 +12,11 @@ const GAMES_DATABASE = [
     duration: "30-60 min",
     category: "Playtest / Delirimedia",
     difficulty: "Medio",
-    tags: ["Playtest", "Carte", "Tutti contro tutti", "Competitivo", "Made in Rimini", "Folle"],
+    tags: ["Esclusiva Delirimedia", "Playtest", "Carte", "Tutti contro tutti", "Competitivo", "Made in Rimini", "Folle"],
     description: "Il nuovo e folle gioco di carte in sviluppo da DELIRIMEDIA. Provalo in anteprima alle Lento Game Nights, partecipa al playtesting pubblico e lascia il tuo feedback!",
-    image: "deliricard-cover.jpg"
+    image: "deliricard-cover.jpg",
+    exclusive: true,
+    exclusiveLabel: "Esclusiva Delirimedia · Solo su prenotazione"
   },
   {
     id: "5-alive",
@@ -450,14 +452,15 @@ function renderGames(games) {
   
   games.forEach(game => {
     const card = document.createElement("article");
-    card.className = "game-card";
+    card.className = "game-card" + (game.exclusive ? " is-exclusive" : "");
     card.setAttribute("data-id", game.id);
-    
+
     // Create card markup
     card.innerHTML = `
       <div class="card-img-wrapper">
         <img class="game-img" src="${getGameImage(game)}" alt="${game.title}" loading="lazy">
         <span class="game-difficulty-badge ${game.difficulty.toLowerCase()}">${game.difficulty}</span>
+        ${game.exclusive ? `<span class="exclusive-ribbon">⭐ ${game.exclusiveLabel || "Esclusiva · Solo su prenotazione"}</span>` : ""}
       </div>
       <div class="card-content">
         <span class="game-category">${game.category}</span>
