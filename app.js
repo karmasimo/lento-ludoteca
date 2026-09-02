@@ -663,11 +663,11 @@ const GDR_DATABASE = {
     id: "hekto-cyberpunk",
     title: "Ombre su Hekto: Omicidio nel Sottolivello",
     genre: "CYBERPUNK NOIR · INVESTIGATIVO",
-    master: "Stefano (Staffan Mahad)",
+    master: "Stefano",
     playersMax: "Max 3 Giocatori",
+    playersLimit: 2,
     status: "open",
     badges: [
-      "📅 27 Agosto · Ore 20:30",
       "👤 Master: Stefano",
       "👥 Max 3 Giocatori",
       "🎲 Sistema d100 Veloce",
@@ -707,39 +707,47 @@ const GDR_DATABASE = {
 
   "tavolo-2": {
     id: "tavolo-2",
-    title: "Tavolo 2: Avventura Fantasy & Mistero (In Arrivo)",
-    genre: "FANTASY & INVESTIGAZIONE · ONE-SHOT",
-    master: "In definizione (Staff Altroego)",
-    playersMax: "3-4 Giocatori",
-    duration: "~2.5 Ore",
-    system: "Regole Narrative Immediate",
-    status: "pending",
+    title: "Green Oaks GDR — One-Shot",
+    genre: "GREEN OAKS GDR · COMMEDIA SURREALE",
+    master: "Alessandro",
+    playersMax: "Max 4 Giocatori",
+    playersLimit: 4,
+    duration: "~2 Ore",
+    system: "Green Oaks GDR",
+    status: "open",
     badges: [
-      "📅 27 Agosto · Ore 20:30",
-      "👤 Master: In definizione",
-      "👥 Posti da definire",
-      "🎲 Regolamento Snello",
-      "✨ Schede Pre-Generate"
+      "👤 Master: Alessandro",
+      "👥 Max 4 Giocatori",
+      "🃏 Mazzo da Briscola",
+      "🌴 Vacanza sulla Riviera"
     ],
-    storyTitle: "Anteprima Narrativa (In Fase di Scrittura)",
+    storyTitle: "Vacanza da sogno sulla Riviera",
     lore: `
-      <p><strong>Lo Stato del Tavolo:</strong> Il secondo tavolo della nostra One-Shot Night mensile è attualmente in fase di preparazione con il team di Master di Altroego e Bar Lento.</p>
+      <p><strong>Benvenuti nella vacanza riminese più esclusiva per Anziani:</strong> la casa di riposo Green Oaks porta i suoi ospiti in una colonia completamente ristrutturata, modernissima e pronta a offrire ogni comfort.</p>
       <br>
-      <p>Stiamo rifinendo un'avventura autoconclusiva intensa e ricca di suspense, enigmi e scelte morali decisive che metteranno alla prova la coesione del gruppo.</p>
+      <p>Ci sono <strong>campi da bocce olografici</strong>, croupier pronti per le partite a briscola e un <strong>Open Bar 24/7</strong>. Sembra la vacanza perfetta sulla Riviera.</p>
       <br>
-      <p>Nei prossimi giorni verranno svelati il <strong>titolo ufficiale</strong> e la <strong>sinossi della missione</strong>!</p>
+      <p>Ma con il calare della notte alcuni Anziani iniziano a sparire inspiegabilmente. Starà ai nostri eroi capire cosa sta succedendo e quale minaccia incombe sulla loro lussuosissima vacanza.</p>
     `,
-    systemTitle: "Filosofia di Gioco al Bar Lento",
+    systemTitle: "Come funziona Green Oaks",
     systemDetails: `
-      <p>Tutti i tavoli delle nostre serate GDR sono pensati con una filosofia comune: <strong>zero barriere all'ingresso</strong> e massimo divertimento attorno al tavolo.</p>
+      <p><strong>Green Oaks</strong> è un GDR leggero e surreale: si gioca nei panni di Anziani con un passato straordinario, usando un comune <strong>mazzo da briscola</strong> al posto dei dadi. Il caos e le idee dei giocatori costruiscono gran parte della storia al tavolo.</p>
       <div class="system-mechanics-grid">
         <div class="mechanic-item">
-          <strong>☕ Cozy & Conviviale</strong>
-          Si gioca mentre si consuma al bar, in un clima informale e accogliente ideale per fare nuove conoscenze.
+          <strong>👴 Crea il tuo Anziano</strong>
+          Ogni personaggio è definito da tre Descrittori: chi era, cosa fa da pensionato e qual è il suo hobby. Il passato può essere molto più incredibile di quanto sembri.
         </div>
         <div class="mechanic-item">
-          <strong>🎒 Tutto Pronto al Locale</strong>
-          Non serve portare nulla da casa: dadi, schede già pronte, matite e accessori ti aspettano al tavolo.
+          <strong>🃏 Prove con le carte</strong>
+          Quando l'esito è incerto, peschi una carta dal mazzo da briscola: valore e seme raccontano cosa accade, senza calcoli complessi.
+        </div>
+        <div class="mechanic-item">
+          <strong>😤 Fastidio e Spocchia</strong>
+          I contatori di Fastidio e Spocchia trasformano le lamentele, l'esperienza e le scenate degli Anziani in parte delle regole.
+        </div>
+        <div class="mechanic-item">
+          <strong>🏗️ Avventura pronta al tavolo</strong>
+          Il C.A.N.T.I.E.R.E. aiuta il Narratore a far partire una storia anche con poca preparazione; poi le scelte e i racconti degli Anziani la rendono unica.
         </div>
       </div>
     `
@@ -749,8 +757,9 @@ const GDR_DATABASE = {
     id: "tavolo-3",
     title: "Tavolo 3: Avventura Sci-Fi & Spazio (In Arrivo)",
     genre: "SCI-FI & MISTERO · ONE-SHOT",
-    master: "In definizione (Staff Altroego)",
+    master: "In definizione (Staff Delirimedia)",
     playersMax: "3-4 Giocatori",
+    playersLimit: 4,
     duration: "~2.5 Ore",
     system: "Regole Narrative Immediate",
     status: "pending",
@@ -841,6 +850,20 @@ function openGdrModal(gdrId) {
   
   if (gdrBookingForm) {
     gdrBookingForm.reset();
+
+    const peopleSelect = document.getElementById("gdr-booking-people");
+    const playersLimit = gdr.playersLimit || 3;
+    if (peopleSelect) {
+      peopleSelect.innerHTML = "";
+      for (let seats = 1; seats <= playersLimit; seats += 1) {
+        const option = document.createElement("option");
+        option.value = String(seats);
+        option.textContent = seats === playersLimit
+          ? `${seats} ${seats === 1 ? "persona" : "persone"} (Tavolo completo)`
+          : `${seats} ${seats === 1 ? "persona" : "persone"} (${seats} ${seats === 1 ? "posto" : "posti"})`;
+        peopleSelect.appendChild(option);
+      }
+    }
     
     // Set confirmed event date
     const dateInput = document.getElementById("gdr-booking-date");
@@ -1060,11 +1083,12 @@ Grazie! Ci vediamo lì! 🎲`;
 document.addEventListener("DOMContentLoaded", () => {
   applyFilters();
   
-  // Initial view based on hash or default to GDR
-  if (window.location.hash === "#board-games-catalog" || window.location.hash === "#giochi") {
-    switchTab("games");
-  } else {
+  // Sezione GDR nascosta per ora (nessuna data attiva): default alla ludoteca giochi da tavolo.
+  // Per riattivare in futuro, invertire questa condizione per tornare al default "gdr".
+  if (window.location.hash === "#gdr-section" || window.location.hash === "#gdr") {
     switchTab("gdr");
+  } else {
+    switchTab("games");
   }
   
   // Setup date picker default (next Thursday)
@@ -1083,4 +1107,3 @@ document.addEventListener("DOMContentLoaded", () => {
     dateInput.min = `${yyyy}-${mm}-${dd}`;
   }
 });
-

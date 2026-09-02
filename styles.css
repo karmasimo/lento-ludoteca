@@ -1262,6 +1262,8 @@ body {
 
 .gdr-modal-visual {
   background: linear-gradient(135deg, #090d16 0%, #1e1b4b 60%, #0f172a 100%);
+  height: auto;
+  flex: 0 0 auto;
   padding: 2.5rem 2rem 2rem;
   position: relative;
   overflow: hidden;
@@ -1506,5 +1508,4 @@ body {
 .gdr-submit-btn:hover {
   background: linear-gradient(135deg, #c24331 0%, #a83222 100%);
 }
-
 

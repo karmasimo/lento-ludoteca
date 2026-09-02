@@ -6,8 +6,8 @@
   <title>Ludoteca Bar Lento — Esplora e Prenota Giochi</title>
   
   <meta name="description" content="Esplora il catalogo di giochi da tavolo e di ruolo disponibili per le Lento Game Nights al Bar Lento di Rimini. Prenota il tuo tavolo e gioco preferito!">
-  <meta name="keywords" content="Bar Lento, Rimini, Giochi da tavolo, Gioco di ruolo, Lento Game Night, Delirimedia, Altroego">
-  <meta name="author" content="DELIRIMEDIA & Altroego">
+  <meta name="keywords" content="Bar Lento, Rimini, Giochi da tavolo, Gioco di ruolo, Lento Game Night, Delirimedia">
+  <meta name="author" content="DELIRIMEDIA">
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- CSS -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260822-modal-fix">
 </head>
 <body>
   
@@ -23,7 +23,7 @@
   <header class="app-header">
     <div class="header-container">
       <div class="brand-badge">
-        <span class="badge-tag">DELIRIMEDIA & ALTROEGO PRESENTANO</span>
+        <span class="badge-tag">DELIRIMEDIA PRESENTA</span>
       </div>
       <div class="logo-title-row">
         <!-- Re-creazione vettoriale Logo Bar Lento -->
@@ -48,19 +48,20 @@
       
       <!-- Quick Navigation Tabs -->
       <nav class="header-nav-tabs" aria-label="Navigazione rapida">
-        <button type="button" class="nav-tab gdr-tab active" id="tab-btn-gdr" data-tab="gdr">
+        <!-- Tab GDR nascosto per ora insieme alla sezione (nessuna data attiva). Riattivare per una data futura: rimuovere "hidden" e "style" qui sotto e sulla sezione #gdr-section, rimettere "active" su questo bottone e toglierlo da #tab-btn-games. (Nota: .nav-tab in styles.css imposta display:inline-flex, quindi "hidden" da solo non basta: serve anche lo style inline) -->
+        <button type="button" class="nav-tab gdr-tab" id="tab-btn-gdr" data-tab="gdr" hidden style="display:none">
           <span class="live-dot"></span>
           <span>🐉 One-Shot GDR · 27 Agosto</span>
         </button>
-        <button type="button" class="nav-tab" id="tab-btn-games" data-tab="games">
+        <button type="button" class="nav-tab active" id="tab-btn-games" data-tab="games">
           <span>🎲 Ludoteca Giochi da Tavolo</span>
         </button>
       </nav>
     </div>
   </header>
   
-  <!-- GDR Special One-Shot Section -->
-  <section class="gdr-section" id="gdr-section">
+  <!-- GDR Special One-Shot Section — nascosta per ora (nessuna data attiva), pronta per riattivazione futura -->
+  <section class="gdr-section" id="gdr-section" hidden>
     <div class="gdr-container">
       <div class="gdr-header">
         <div class="gdr-badge-row">
@@ -78,20 +79,16 @@
         <article class="gdr-card active-table" data-gdr-id="hekto-cyberpunk" tabindex="0" role="button" aria-label="Dettagli One-Shot Ombre su Hekto">
           <div class="gdr-card-banner">
             <span class="gdr-status-badge open">
-              <span class="badge-dot"></span> 3 Posti Disponibili
+              <span class="badge-dot"></span> 2 Posti Disponibili
             </span>
             <span class="gdr-tag-badge">Cyberpunk Noir</span>
           </div>
           <div class="gdr-card-body">
-            <span class="gdr-meta-master">Master: <strong>Stefano</strong> (Staffan Mahad)</span>
+            <span class="gdr-meta-master">Master: <strong>Stefano</strong></span>
             <h3 class="gdr-card-title">Ombre su Hekto: Omicidio nel Sottolivello</h3>
             <p class="gdr-card-excerpt">Nei meandri del Sottolivello 600 di un'infinita città-mondo, un omicidio impossibile sconvolge i bassifondi. Un'indagine ad alto rischio tra fanatici religiosi, segreti corporativi e una taglia da 100.000 corone.</p>
             
             <div class="gdr-specs-row">
-              <span class="gdr-spec">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                27 Agosto · 20:30
-              </span>
               <span class="gdr-spec">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                 Max 3 Giocatori
@@ -103,29 +100,29 @@
             </div>
 
             <button type="button" class="gdr-action-btn open-gdr-modal-btn" data-gdr-id="hekto-cyberpunk">
-              <span>Scopri Storia, Regole & Prenota</span>
+              <span>Scopri Dettagli & Prenota</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </button>
           </div>
         </article>
 
-        <!-- Table 2: Coming Soon (Interactive Preview) -->
-        <article class="gdr-card pending-table clickable" data-gdr-id="tavolo-2" tabindex="0" role="button" aria-label="Dettagli One-Shot Tavolo 2">
+        <!-- Table 2: Green Oaks GDR (Booking Open) -->
+        <article class="gdr-card active-table" data-gdr-id="tavolo-2" tabindex="0" role="button" aria-label="Dettagli One-Shot Green Oaks GDR">
           <div class="gdr-card-banner">
-            <span class="gdr-status-badge pending">
-              <span class="badge-dot"></span> In Arrivo
+            <span class="gdr-status-badge open">
+              <span class="badge-dot"></span> Prenotazioni Aperte
             </span>
-            <span class="gdr-tag-badge">Tavolo 2 · Fantasy & Mistero</span>
+            <span class="gdr-tag-badge">Tavolo 2 · Green Oaks GDR</span>
           </div>
           <div class="gdr-card-body">
-            <span class="gdr-meta-master">Master: <strong>In definizione</strong> (Staff Altroego)</span>
-            <h3 class="gdr-card-title">Tavolo 2 — Nuova Avventura</h3>
-            <p class="gdr-card-excerpt">Il secondo tavolo della nostra One-Shot Night è attualmente in fase di preparazione. Un'avventura carica di scelte morali, tensione ed esplorazione guidata da regole narrative immediate.</p>
+            <span class="gdr-meta-master">Master: <strong>Alessandro</strong></span>
+            <h3 class="gdr-card-title">Green Oaks GDR — One-Shot</h3>
+            <p class="gdr-card-excerpt">Una vacanza riminese da sogno per Anziani fuori dal comune: bocce olografiche, croupier per la briscola e Open Bar 24/7. Finché, ogni notte, qualcuno comincia a sparire.</p>
             
             <div class="gdr-specs-row">
               <span class="gdr-spec">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                Posti da definire
+                Max 4 Giocatori
               </span>
               <span class="gdr-spec">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
@@ -133,12 +130,12 @@
               </span>
               <span class="gdr-spec">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-                Regole Narrative
+                Carte da Briscola
               </span>
             </div>
 
-            <button type="button" class="gdr-action-btn secondary-btn open-gdr-modal-btn" data-gdr-id="tavolo-2">
-              <span>Scopri Dettagli & Lista d'Attesa</span>
+            <button type="button" class="gdr-action-btn open-gdr-modal-btn" data-gdr-id="tavolo-2">
+              <span>Scopri Dettagli & Prenota</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </button>
           </div>
@@ -153,7 +150,7 @@
             <span class="gdr-tag-badge">Tavolo 3 · Sci-Fi & Spazio</span>
           </div>
           <div class="gdr-card-body">
-            <span class="gdr-meta-master">Master: <strong>In definizione</strong> (Staff Altroego)</span>
+            <span class="gdr-meta-master">Master: <strong>In definizione</strong> (Staff Delirimedia)</span>
             <h3 class="gdr-card-title">Tavolo 3 — Nuova Avventura</h3>
             <p class="gdr-card-excerpt">Il terzo tavolo della nostra serata mensile è in cantiere. Preparati a scoprire una nuova ambientazione e lanciarti in un'avventura dove ogni scelta del party conta.</p>
             
@@ -297,7 +294,7 @@
   <footer class="app-footer">
     <div class="footer-container">
       <p class="footer-note">Le <strong>Lento Game Nights</strong> si tengono ogni giovedì sera a partire dalle 21:00 presso il <strong>Bar Lento</strong> (Rimini, Via Bertola 52).</p>
-      <p class="co-branding">Powered by <a href="#" class="brand-link">DELIRIMEDIA</a> & <a href="#" class="brand-link">ALTROEGO</a> · © 2026</p>
+      <p class="co-branding">Powered by <a href="#" class="brand-link">DELIRIMEDIA</a> · © 2026</p>
     </div>
   </footer>
   
@@ -447,7 +444,8 @@
                   <select id="gdr-booking-people">
                     <option value="1" selected>1 persona (1 posto)</option>
                     <option value="2">2 persone (2 posti)</option>
-                    <option value="3">3 persone (Tavolo completo)</option>
+                    <option value="3">3 persone (3 posti)</option>
+                    <option value="4">4 persone (Tavolo completo)</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -493,6 +491,6 @@
   </div>
   
   <!-- App JS -->
-  <script src="app.js"></script>
+  <script src="app.js?v=20260902-gdr-hidden"></script>
 </body>
 </html>
