@@ -42,7 +42,7 @@
         </div>
         <div class="title-details">
           <h1>Lento Ludoteca</h1>
-          <p class="subtitle">Esplora la nostra collezione di giochi e prenota un tavolo per giovedì sera.</p>
+          <p class="subtitle">Esplora la collezione e prenota il tuo tavolo per le serate giochi (ogni due settimane di giovedì, dalle 20:30). Prossima data: Giovedì 15 Ottobre.</p>
         </div>
       </div>
       
@@ -51,10 +51,13 @@
         <!-- Tab GDR nascosto per ora insieme alla sezione (nessuna data attiva). Riattivare per una data futura: rimuovere "hidden" e "style" qui sotto e sulla sezione #gdr-section, rimettere "active" su questo bottone e toglierlo da #tab-btn-games. (Nota: .nav-tab in styles.css imposta display:inline-flex, quindi "hidden" da solo non basta: serve anche lo style inline) -->
         <button type="button" class="nav-tab gdr-tab" id="tab-btn-gdr" data-tab="gdr" hidden style="display:none">
           <span class="live-dot"></span>
-          <span>🐉 One-Shot GDR · 27 Agosto</span>
+          <span>🎃 One-Shot GDR · 29 Ottobre</span>
         </button>
         <button type="button" class="nav-tab active" id="tab-btn-games" data-tab="games">
           <span>🎲 Ludoteca Giochi da Tavolo</span>
+        </button>
+        <button type="button" class="nav-tab nav-tab-book" id="btn-header-book-table">
+          <span>🪑 Prenota un Tavolo</span>
         </button>
       </nav>
     </div>
@@ -283,10 +286,16 @@
   <!-- Booking Reminder Banner -->
   <div class="booking-notice">
     <div class="booking-notice-inner">
-      <span class="booking-notice-icon" aria-hidden="true">📌</span>
-      <p class="booking-notice-text">
-        <strong>Prenota il tuo gioco!</strong> Per essere sicuro che sia disponibile la sera dell'evento, ti consigliamo di prenotarlo in anticipo tramite WhatsApp.
-      </p>
+      <div class="booking-notice-content">
+        <span class="booking-notice-icon" aria-hidden="true">🪑</span>
+        <p class="booking-notice-text">
+          <strong>Prenota un tavolo per la serata!</strong> Puoi prenotare direttamente il tuo posto (anche senza scegliere un gioco) oppure sfogliare il catalogo per bloccare il tuo titolo preferito.
+        </p>
+      </div>
+      <button type="button" class="booking-notice-btn" id="btn-notice-book-table">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+        <span>Prenota Tavolo</span>
+      </button>
     </div>
   </div>
 
@@ -303,7 +312,7 @@
   <!-- Bottom Info / Pitch Integration -->
   <footer class="app-footer">
     <div class="footer-container">
-      <p class="footer-note">Le <strong>Lento Game Nights</strong> si tengono ogni giovedì sera a partire dalle 21:00 presso il <strong>Bar Lento</strong> (Rimini, Via Bertola 52).</p>
+      <p class="footer-note">Le <strong>Lento Game Nights</strong> si tengono ogni due settimane di giovedì sera a partire dalle 20:30 presso il <strong>Bar Lento</strong> (Rimini, Via Bertola 52).</p>
       <p class="co-branding">Powered by <a href="#" class="brand-link">DELIRIMEDIA</a> · © 2026</p>
     </div>
   </footer>
@@ -338,13 +347,24 @@
           
           <!-- Booking Form -->
           <div class="booking-section">
-            <h3>Prenota un tavolo per questo gioco</h3>
-            <p class="booking-subtitle">Ti riserveremo un tavolo e terremo da parte il gioco fino al tuo arrivo. La prenotazione è gestita direttamente tramite WhatsApp.</p>
+            <h3 id="booking-section-title">Prenota un tavolo per questo gioco</h3>
+            <p class="booking-subtitle" id="booking-section-subtitle">Ti riserveremo un tavolo e terremo da parte il gioco fino al tuo arrivo. La prenotazione è gestita direttamente tramite WhatsApp.</p>
             
             <form id="booking-form">
               <div class="form-group">
                 <label for="booking-name">A che nome prenotiamo?</label>
                 <input type="text" id="booking-name" required placeholder="Esempio: Marco Rossi">
+              </div>
+
+              <div class="form-group" id="group-game-choice">
+                <label for="booking-game-choice">Gioco desiderato (opzionale)</label>
+                <div class="select-wrapper">
+                  <select id="booking-game-choice">
+                    <option value="">Nessuna preferenza (Tavolo libero / Sceglieremo al bar)</option>
+                    <!-- Popolato dinamicamente da JS con l'intero catalogo -->
+                  </select>
+                </div>
+                <small class="form-help-text">Puoi bloccare un titolo specifico oppure scegliere liberamente al tuo arrivo dalla nostra ludoteca.</small>
               </div>
               
               <div class="form-grid">
@@ -374,12 +394,25 @@
               
               <div class="form-group">
                 <label for="booking-date">Data della serata</label>
-                <input type="date" id="booking-date" required>
+                <div class="select-wrapper">
+                  <select id="booking-date" required>
+                    <option value="2026-10-15" selected>Giovedì 15 Ottobre 2026 (Rilancio & Tavolo Autori)</option>
+                    <option value="2026-10-29">Giovedì 29 Ottobre 2026 (Speciale Halloween & GDR)</option>
+                    <option value="2026-11-12">Giovedì 12 Novembre 2026 (Torneo Party Game & TCG)</option>
+                    <option value="2026-11-26">Giovedì 26 Novembre 2026 (One-Shot GDR & Playtest)</option>
+                    <option value="2026-12-10">Giovedì 10 Dicembre 2026 (Speciale Inverno & Preview Astoria)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="booking-notes">Note o richieste (opzionale)</label>
+                <input type="text" id="booking-notes" placeholder="Es. siamo principianti, portiamo noi un gioco...">
               </div>
               
               <button type="submit" class="submit-booking-btn">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                Invia Prenotazione su WhatsApp
+                <span id="booking-submit-text">Invia Prenotazione su WhatsApp</span>
               </button>
             </form>
           </div>

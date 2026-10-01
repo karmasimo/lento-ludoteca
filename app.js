@@ -400,6 +400,9 @@ const WHATSAPP_NUMBER = "393393729188"; // Official booking number
 // Dynamic Placeholder for games in development (Playtest)
 const PLAYTEST_PLACEHOLDER = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%"><rect width="400" height="300" fill="%23fcfbf7"/><g stroke="%23e05a47" stroke-width="1.5" fill="none" opacity="0.12"><line x1="0" y1="50" x2="400" y2="50"/><line x1="0" y1="100" x2="400" y2="100"/><line x1="0" y1="150" x2="400" y2="150"/><line x1="0" y1="200" x2="400" y2="200"/><line x1="0" y1="250" x2="400" y2="250"/><line x1="50" y1="0" x2="50" y2="300"/><line x1="100" y1="0" x2="100" y2="300"/><line x1="150" y1="0" x2="150" y2="300"/><line x1="200" y1="0" x2="200" y2="300"/><line x1="250" y1="0" x2="250" y2="300"/><line x1="300" y1="0" x2="300" y2="300"/><line x1="350" y1="0" x2="350" y2="300"/></g><rect x="150" y="60" width="100" height="110" rx="8" fill="none" stroke="%23e05a47" stroke-width="2.5" stroke-dasharray="6 4"/><path d="M200 85 L180 125 L220 125 Z" fill="%23e05a47" opacity="0.85"/><circle cx="200" cy="100" r="14" fill="%23fcfbf7" stroke="%23e05a47" stroke-width="2.5"/><path d="M190 140 H210 M180 150 H220" stroke="%23e05a47" stroke-width="2.5" stroke-linecap="round"/><text x="200" y="220" font-family="'Outfit', sans-serif" font-size="20" font-weight="bold" fill="%231e293b" text-anchor="middle">GIOCO IN SVILUPPO</text><text x="200" y="245" font-family="'Inter', sans-serif" font-size="13" font-weight="500" fill="%2364748b" text-anchor="middle">Playtest %26 Feedback Pubblico</text></svg>`;
 
+// Dynamic Placeholder for General Table Booking (without specific game)
+const TABLE_BOOKING_PLACEHOLDER = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%"><rect width="400" height="300" fill="%23fcfbf7"/><g stroke="%23e05a47" stroke-width="1.5" fill="none" opacity="0.12"><line x1="0" y1="50" x2="400" y2="50"/><line x1="0" y1="100" x2="400" y2="100"/><line x1="0" y1="150" x2="400" y2="150"/><line x1="0" y1="200" x2="400" y2="200"/><line x1="0" y1="250" x2="400" y2="250"/><line x1="50" y1="0" x2="50" y2="300"/><line x1="100" y1="0" x2="100" y2="300"/><line x1="150" y1="0" x2="150" y2="300"/><line x1="200" y1="0" x2="200" y2="300"/><line x1="250" y1="0" x2="250" y2="300"/><line x1="300" y1="0" x2="300" y2="300"/><line x1="350" y1="0" x2="350" y2="300"/></g><rect x="130" y="55" width="140" height="115" rx="16" fill="%23ffffff" stroke="%23e05a47" stroke-width="2.5"/><text x="200" y="115" font-family="'Outfit', sans-serif" font-size="38" text-anchor="middle">🎲</text><text x="200" y="145" font-family="'Outfit', sans-serif" font-size="14" font-weight="bold" fill="%23e05a47" text-anchor="middle">TAVOLO LIBERO</text><text x="200" y="215" font-family="'Outfit', sans-serif" font-size="20" font-weight="bold" fill="%231e293b" text-anchor="middle">PRENOTAZIONE TAVOLO</text><text x="200" y="240" font-family="'Inter', sans-serif" font-size="13" font-weight="500" fill="%2364748b" text-anchor="middle">Bar Lento · Serate Giochi</text></svg>`;
+
 function getGameImage(game) {
   if (game.image && game.image.trim() !== "") {
     return game.image;
@@ -567,8 +570,27 @@ function applyFilters() {
 // Modal handling
 let currentSelectedGame = null;
 
+function populateGameChoices() {
+  const gameSelect = document.getElementById("booking-game-choice");
+  if (!gameSelect) return;
+  
+  const curVal = gameSelect.value;
+  gameSelect.innerHTML = `<option value="">Nessuna preferenza (Tavolo libero / Sceglieremo al bar)</option>`;
+  
+  const sortedGames = [...GAMES_CATALOG].sort((a, b) => a.title.localeCompare(b.title));
+  sortedGames.forEach(game => {
+    const opt = document.createElement("option");
+    opt.value = game.title;
+    opt.textContent = `${game.title} (${game.players.min}-${game.players.max} gioc.)`;
+    gameSelect.appendChild(opt);
+  });
+  
+  if (curVal) gameSelect.value = curVal;
+}
+
 function openGameModal(game) {
   currentSelectedGame = game;
+  populateGameChoices();
   
   document.getElementById("modal-game-title").textContent = game.title;
   document.getElementById("modal-game-category").textContent = game.category;
@@ -596,16 +618,82 @@ function openGameModal(game) {
     modalVisual.style.setProperty("--bg-image", `url('${modalImgUrl}')`);
   }
   
+  // Titles & text
+  const titleEl = document.getElementById("booking-section-title");
+  if (titleEl) titleEl.textContent = `Prenota un tavolo per ${game.title}`;
+  const subEl = document.getElementById("booking-section-subtitle");
+  if (subEl) subEl.textContent = `Ti riserveremo un tavolo e terremo da parte "${game.title}" fino al tuo arrivo. La prenotazione arriva direttamente a Simone su WhatsApp per conferma immediata.`;
+  const submitText = document.getElementById("booking-submit-text");
+  if (submitText) submitText.textContent = `Prenota Tavolo & ${game.title}`;
+  
   // Reset booking form values & set initial people count
+  bookingForm.reset();
+  const inputPeople = document.getElementById("booking-people");
+  if (inputPeople) {
+    inputPeople.value = Math.min(Math.max(game.players.min, 4), game.players.max);
+  }
+  
+  const gameChoice = document.getElementById("booking-game-choice");
+  if (gameChoice) {
+    gameChoice.value = game.title;
+  }
+  
+  // Show modal
+  gameModal.classList.add("active");
+  document.body.style.overflow = "hidden"; // Prevent background scroll
+}
+
+function openTableBookingModal() {
+  currentSelectedGame = null;
+  populateGameChoices();
+  
+  document.getElementById("modal-game-title").textContent = "Prenota un Tavolo al Bar Lento";
+  document.getElementById("modal-game-category").textContent = "Lento Game Night · Rimini";
+  document.getElementById("modal-game-desc").textContent = "Riserva un tavolo per il tuo gruppo per la serata giochi al Bar Lento. Puoi scegliere liberamente i titoli al tuo arrivo dalla nostra ludoteca, provare i prototipi degli autori o portare liberamente i tuoi giochi da casa!";
+  document.getElementById("modal-game-players").textContent = "1-25+ Persone";
+  document.getElementById("modal-game-duration").textContent = "Dalle 20:30";
+  document.getElementById("modal-game-difficulty").textContent = "Tavoli Liberi";
+  
+  const diffBadge = document.getElementById("modal-game-difficulty");
+  diffBadge.className = "modal-badge difficulty-badge facile";
+  
+  const tagsContainer = document.getElementById("modal-game-tags");
+  tagsContainer.innerHTML = [
+    "Tavolo Libero",
+    "Ludoteca a Disposizione",
+    "Porta i Tuoi Giochi",
+    "Cocktail & Piadine",
+    "Ingresso Gratuito"
+  ].map(tag => `<span class="tag-badge">${tag}</span>`).join("");
+  
+  document.getElementById("modal-game-img").src = TABLE_BOOKING_PLACEHOLDER;
+  document.getElementById("modal-game-img").alt = "Prenotazione Tavolo Bar Lento";
+  
+  const modalVisual = document.querySelector(".modal-visual");
+  if (modalVisual) {
+    modalVisual.style.setProperty("--bg-image", `url('${TABLE_BOOKING_PLACEHOLDER}')`);
+  }
+  
+  const titleEl = document.getElementById("booking-section-title");
+  if (titleEl) titleEl.textContent = "Prenota il tuo Tavolo";
+  const subEl = document.getElementById("booking-section-subtitle");
+  if (subEl) subEl.textContent = "Ti riserveremo un tavolo fino al tuo arrivo. La prenotazione arriva direttamente a Simone su WhatsApp per conferma immediata.";
+  const submitText = document.getElementById("booking-submit-text");
+  if (submitText) submitText.textContent = "Invia Prenotazione Tavolo su WhatsApp";
+  
   bookingForm.reset();
   const inputPeople = document.getElementById("booking-people");
   if (inputPeople) {
     inputPeople.value = "4";
   }
   
-  // Show modal
+  const gameChoice = document.getElementById("booking-game-choice");
+  if (gameChoice) {
+    gameChoice.value = "";
+  }
+  
   gameModal.classList.add("active");
-  document.body.style.overflow = "hidden"; // Prevent background scroll
+  document.body.style.overflow = "hidden";
 }
 
 function closeGameModal() {
@@ -1043,30 +1131,61 @@ if (btnPeoplePlus && inputPeopleEl) {
   });
 }
 
-// Form Booking Submit to WhatsApp for Board Games
+// Direct Table Booking Buttons Triggers
+const btnHeaderBookTable = document.getElementById("btn-header-book-table");
+const btnNoticeBookTable = document.getElementById("btn-notice-book-table");
+
+if (btnHeaderBookTable) {
+  btnHeaderBookTable.addEventListener("click", openTableBookingModal);
+}
+if (btnNoticeBookTable) {
+  btnNoticeBookTable.addEventListener("click", openTableBookingModal);
+}
+
+// Form Booking Submit to WhatsApp for Board Games & Tables
 bookingForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  
-  if (!currentSelectedGame) return;
   
   const name = document.getElementById("booking-name").value.trim();
   const peopleNum = parseInt(document.getElementById("booking-people").value, 10) || 4;
   const peopleText = peopleNum === 1 ? "1 persona" : `${peopleNum} persone`;
   const time = document.getElementById("booking-time").value;
-  const date = document.getElementById("booking-date").value || "prossimo giovedì";
   
-  // Build message template
-  const textMessage = `Ciao! Vorrei prenotare un tavolo per la Lento Game Night.
+  const dateSelect = document.getElementById("booking-date");
+  const selectedDateText = (dateSelect && dateSelect.selectedIndex >= 0) 
+    ? dateSelect.options[dateSelect.selectedIndex].text 
+    : "prossima serata";
+    
+  const gameSelect = document.getElementById("booking-game-choice");
+  const chosenGame = gameSelect && gameSelect.value ? gameSelect.value.trim() : (currentSelectedGame ? currentSelectedGame.title : "");
   
-📌 Gioco: *${currentSelectedGame.title}*
-👤 Nome: *${name}*
-👥 Persone: *${peopleText}*
-📅 Data: *${date}*
-🕒 Orario d'arrivo: *${time}*
+  const notesInput = document.getElementById("booking-notes");
+  const notes = notesInput ? notesInput.value.trim() : "";
+  
+  let textMessage;
+  if (chosenGame && chosenGame !== "") {
+    textMessage = `Ciao Simone! Vorrei prenotare un tavolo per la Lento Game Night.
 
-Grazie! Ci vediamo lì! 🎲`;
+📌 Gioco desiderato: *${chosenGame}*
+👤 Nome prenotazione: *${name}*
+👥 Partecipanti: *${peopleText}*
+📅 Data: *${selectedDateText}*
+🕒 Orario d'arrivo: *${time}*${notes ? `\n💬 Note: *${notes}*` : ""}
+
+Grazie! Ci vediamo al Bar Lento! 🎲🍻`;
+  } else {
+    textMessage = `Ciao Simone! Vorrei prenotare un tavolo per la Lento Game Night.
+
+🪑 Prenotazione: *Tavolo Libero (sceglieremo sul posto)*
+👤 Nome prenotazione: *${name}*
+👥 Partecipanti: *${peopleText}*
+📅 Data: *${selectedDateText}*
+🕒 Orario d'arrivo: *${time}*${notes ? `\n💬 Note: *${notes}*` : ""}
+
+Grazie! Ci vediamo al Bar Lento! 🎲🍻`;
+  }
   
-  // Encode and open link
+  // Encode and open link directly to Simone's WhatsApp
   const encodedText = encodeURIComponent(textMessage);
   const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedText}`;
   
@@ -1085,6 +1204,7 @@ Grazie! Ci vediamo lì! 🎲`;
 // Init App
 document.addEventListener("DOMContentLoaded", () => {
   applyFilters();
+  populateGameChoices();
   
   // Sezione GDR nascosta per ora (nessuna data attiva): default alla ludoteca giochi da tavolo.
   // Per riattivare in futuro, invertire questa condizione per tornare al default "gdr".
@@ -1092,21 +1212,5 @@ document.addEventListener("DOMContentLoaded", () => {
     switchTab("gdr");
   } else {
     switchTab("games");
-  }
-  
-  // Setup date picker default (next Thursday)
-  const dateInput = document.getElementById("booking-date");
-  if (dateInput) {
-    const today = new Date();
-    const nextThursday = new Date(today);
-    nextThursday.setDate(today.getDate() + ((4 - today.getDay() + 7) % 7 || 7));
-    
-    // Format YYYY-MM-DD
-    const yyyy = nextThursday.getFullYear();
-    const mm = String(nextThursday.getMonth() + 1).padStart(2, "0");
-    const dd = String(nextThursday.getDate()).padStart(2, "0");
-    
-    dateInput.value = `${yyyy}-${mm}-${dd}`;
-    dateInput.min = `${yyyy}-${mm}-${dd}`;
   }
 });
