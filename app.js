@@ -393,6 +393,7 @@ const GAMES_DATABASE = [
     image: "https://cf.geekdo-images.com/d50LceHj6LIafa4S_qIsCg__itemrep/img/Uswnuak6armCO4JWTi5_03kl0eo=/fit-in/246x300/filters:strip_icc()/pic3189350.jpg"
   }
 ];
+const GAMES_CATALOG = GAMES_DATABASE;
 
 // Configuration
 const WHATSAPP_NUMBER = "393393729188"; // Official booking number
@@ -577,7 +578,7 @@ function populateGameChoices() {
   const curVal = gameSelect.value;
   gameSelect.innerHTML = `<option value="">Nessuna preferenza (Tavolo libero / Sceglieremo al bar)</option>`;
   
-  const sortedGames = [...GAMES_CATALOG].sort((a, b) => a.title.localeCompare(b.title));
+  const sortedGames = [...GAMES_DATABASE].sort((a, b) => a.title.localeCompare(b.title));
   sortedGames.forEach(game => {
     const opt = document.createElement("option");
     opt.value = game.title;
