@@ -398,10 +398,10 @@ const GAMES_DATABASE = [
 const WHATSAPP_NUMBER = "393393729188"; // Official booking number
 
 // Dynamic Placeholder for games in development (Playtest)
-const PLAYTEST_PLACEHOLDER = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%"><rect width="400" height="300" fill="%23fcfbf7"/><g stroke="%23e05a47" stroke-width="1.5" fill="none" opacity="0.12"><line x1="0" y1="50" x2="400" y2="50"/><line x1="0" y1="100" x2="400" y2="100"/><line x1="0" y1="150" x2="400" y2="150"/><line x1="0" y1="200" x2="400" y2="200"/><line x1="0" y1="250" x2="400" y2="250"/><line x1="50" y1="0" x2="50" y2="300"/><line x1="100" y1="0" x2="100" y2="300"/><line x1="150" y1="0" x2="150" y2="300"/><line x1="200" y1="0" x2="200" y2="300"/><line x1="250" y1="0" x2="250" y2="300"/><line x1="300" y1="0" x2="300" y2="300"/><line x1="350" y1="0" x2="350" y2="300"/></g><rect x="150" y="60" width="100" height="110" rx="8" fill="none" stroke="%23e05a47" stroke-width="2.5" stroke-dasharray="6 4"/><path d="M200 85 L180 125 L220 125 Z" fill="%23e05a47" opacity="0.85"/><circle cx="200" cy="100" r="14" fill="%23fcfbf7" stroke="%23e05a47" stroke-width="2.5"/><path d="M190 140 H210 M180 150 H220" stroke="%23e05a47" stroke-width="2.5" stroke-linecap="round"/><text x="200" y="220" font-family="'Outfit', sans-serif" font-size="20" font-weight="bold" fill="%231e293b" text-anchor="middle">GIOCO IN SVILUPPO</text><text x="200" y="245" font-family="'Inter', sans-serif" font-size="13" font-weight="500" fill="%2364748b" text-anchor="middle">Playtest %26 Feedback Pubblico</text></svg>`;
+const PLAYTEST_PLACEHOLDER = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%"><rect width="400" height="300" fill="#fcfbf7"/><g stroke="#e05a47" stroke-width="1.5" fill="none" opacity="0.12"><line x1="0" y1="50" x2="400" y2="50"/><line x1="0" y1="100" x2="400" y2="100"/><line x1="0" y1="150" x2="400" y2="150"/><line x1="0" y1="200" x2="400" y2="200"/><line x1="0" y1="250" x2="400" y2="250"/><line x1="50" y1="0" x2="50" y2="300"/><line x1="100" y1="0" x2="100" y2="300"/><line x1="150" y1="0" x2="150" y2="300"/><line x1="200" y1="0" x2="200" y2="300"/><line x1="250" y1="0" x2="250" y2="300"/><line x1="300" y1="0" x2="300" y2="300"/><line x1="350" y1="0" x2="350" y2="300"/></g><rect x="150" y="60" width="100" height="110" rx="8" fill="none" stroke="#e05a47" stroke-width="2.5" stroke-dasharray="6 4"/><path d="M200 85 L180 125 L220 125 Z" fill="#e05a47" opacity="0.85"/><circle cx="200" cy="100" r="14" fill="#fcfbf7" stroke="#e05a47" stroke-width="2.5"/><path d="M190 140 H210 M180 150 H220" stroke="#e05a47" stroke-width="2.5" stroke-linecap="round"/><text x="200" y="220" font-family="Outfit, sans-serif" font-size="20" font-weight="bold" fill="#1e293b" text-anchor="middle">GIOCO IN SVILUPPO</text><text x="200" y="245" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#64748b" text-anchor="middle">Playtest &amp; Feedback Pubblico</text></svg>`);
 
 // Dynamic Placeholder for General Table Booking (without specific game)
-const TABLE_BOOKING_PLACEHOLDER = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%"><rect width="400" height="300" fill="%23fcfbf7"/><g stroke="%23e05a47" stroke-width="1.5" fill="none" opacity="0.12"><line x1="0" y1="50" x2="400" y2="50"/><line x1="0" y1="100" x2="400" y2="100"/><line x1="0" y1="150" x2="400" y2="150"/><line x1="0" y1="200" x2="400" y2="200"/><line x1="0" y1="250" x2="400" y2="250"/><line x1="50" y1="0" x2="50" y2="300"/><line x1="100" y1="0" x2="100" y2="300"/><line x1="150" y1="0" x2="150" y2="300"/><line x1="200" y1="0" x2="200" y2="300"/><line x1="250" y1="0" x2="250" y2="300"/><line x1="300" y1="0" x2="300" y2="300"/><line x1="350" y1="0" x2="350" y2="300"/></g><rect x="130" y="55" width="140" height="115" rx="16" fill="%23ffffff" stroke="%23e05a47" stroke-width="2.5"/><text x="200" y="115" font-family="'Outfit', sans-serif" font-size="38" text-anchor="middle">🎲</text><text x="200" y="145" font-family="'Outfit', sans-serif" font-size="14" font-weight="bold" fill="%23e05a47" text-anchor="middle">TAVOLO LIBERO</text><text x="200" y="215" font-family="'Outfit', sans-serif" font-size="20" font-weight="bold" fill="%231e293b" text-anchor="middle">PRENOTAZIONE TAVOLO</text><text x="200" y="240" font-family="'Inter', sans-serif" font-size="13" font-weight="500" fill="%2364748b" text-anchor="middle">Bar Lento · Serate Giochi</text></svg>`;
+const TABLE_BOOKING_PLACEHOLDER = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%"><rect width="400" height="300" fill="#fcfbf7"/><g stroke="#e05a47" stroke-width="1.5" fill="none" opacity="0.12"><line x1="0" y1="50" x2="400" y2="50"/><line x1="0" y1="100" x2="400" y2="100"/><line x1="0" y1="150" x2="400" y2="150"/><line x1="0" y1="200" x2="400" y2="200"/><line x1="0" y1="250" x2="400" y2="250"/><line x1="50" y1="0" x2="50" y2="300"/><line x1="100" y1="0" x2="100" y2="300"/><line x1="150" y1="0" x2="150" y2="300"/><line x1="200" y1="0" x2="200" y2="300"/><line x1="250" y1="0" x2="250" y2="300"/><line x1="300" y1="0" x2="300" y2="300"/><line x1="350" y1="0" x2="350" y2="300"/></g><rect x="130" y="55" width="140" height="115" rx="16" fill="#ffffff" stroke="#e05a47" stroke-width="2.5"/><text x="200" y="115" font-family="Outfit, sans-serif" font-size="38" text-anchor="middle">🎲</text><text x="200" y="145" font-family="Outfit, sans-serif" font-size="14" font-weight="bold" fill="#e05a47" text-anchor="middle">TAVOLO LIBERO</text><text x="200" y="215" font-family="Outfit, sans-serif" font-size="20" font-weight="bold" fill="#1e293b" text-anchor="middle">PRENOTAZIONE TAVOLO</text><text x="200" y="240" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#64748b" text-anchor="middle">Bar Lento · Serate Giochi</text></svg>`);
 
 function getGameImage(game) {
   if (game.image && game.image.trim() !== "") {
@@ -644,56 +644,81 @@ function openGameModal(game) {
 }
 
 function openTableBookingModal() {
-  currentSelectedGame = null;
-  populateGameChoices();
-  
-  document.getElementById("modal-game-title").textContent = "Prenota un Tavolo al Bar Lento";
-  document.getElementById("modal-game-category").textContent = "Lento Game Night · Rimini";
-  document.getElementById("modal-game-desc").textContent = "Riserva un tavolo per il tuo gruppo per la serata giochi al Bar Lento. Puoi scegliere liberamente i titoli al tuo arrivo dalla nostra ludoteca, provare i prototipi degli autori o portare liberamente i tuoi giochi da casa!";
-  document.getElementById("modal-game-players").textContent = "1-25+ Persone";
-  document.getElementById("modal-game-duration").textContent = "Dalle 20:30";
-  document.getElementById("modal-game-difficulty").textContent = "Tavoli Liberi";
-  
-  const diffBadge = document.getElementById("modal-game-difficulty");
-  diffBadge.className = "modal-badge difficulty-badge facile";
-  
-  const tagsContainer = document.getElementById("modal-game-tags");
-  tagsContainer.innerHTML = [
-    "Tavolo Libero",
-    "Ludoteca a Disposizione",
-    "Porta i Tuoi Giochi",
-    "Cocktail & Piadine",
-    "Ingresso Gratuito"
-  ].map(tag => `<span class="tag-badge">${tag}</span>`).join("");
-  
-  document.getElementById("modal-game-img").src = TABLE_BOOKING_PLACEHOLDER;
-  document.getElementById("modal-game-img").alt = "Prenotazione Tavolo Bar Lento";
-  
-  const modalVisual = document.querySelector(".modal-visual");
-  if (modalVisual) {
-    modalVisual.style.setProperty("--bg-image", `url('${TABLE_BOOKING_PLACEHOLDER}')`);
+  try {
+    currentSelectedGame = null;
+    populateGameChoices();
+    
+    const titleEl = document.getElementById("modal-game-title");
+    if (titleEl) titleEl.textContent = "Prenota un Tavolo al Bar Lento";
+    
+    const catEl = document.getElementById("modal-game-category");
+    if (catEl) catEl.textContent = "Lento Game Night · Rimini";
+    
+    const descEl = document.getElementById("modal-game-desc");
+    if (descEl) descEl.textContent = "Riserva un tavolo per il tuo gruppo per la serata giochi al Bar Lento. Puoi scegliere liberamente i titoli al tuo arrivo dalla nostra ludoteca, provare i prototipi degli autori o portare liberamente i tuoi giochi da casa!";
+    
+    const playersEl = document.getElementById("modal-game-players");
+    if (playersEl) playersEl.textContent = "1-25+ Persone";
+    
+    const durationEl = document.getElementById("modal-game-duration");
+    if (durationEl) durationEl.textContent = "Dalle 20:30";
+    
+    const diffBadge = document.getElementById("modal-game-difficulty");
+    if (diffBadge) {
+      diffBadge.textContent = "Tavoli Liberi";
+      diffBadge.className = "modal-badge difficulty-badge facile";
+    }
+    
+    const tagsContainer = document.getElementById("modal-game-tags");
+    if (tagsContainer) {
+      tagsContainer.innerHTML = [
+        "Tavolo Libero",
+        "Ludoteca a Disposizione",
+        "Porta i Tuoi Giochi",
+        "Cocktail & Piadine",
+        "Ingresso Gratuito"
+      ].map(tag => `<span class="tag-badge">${tag}</span>`).join("");
+    }
+    
+    const imgEl = document.getElementById("modal-game-img");
+    if (imgEl) {
+      imgEl.src = TABLE_BOOKING_PLACEHOLDER;
+      imgEl.alt = "Prenotazione Tavolo Bar Lento";
+    }
+    
+    const modalVisual = document.querySelector(".modal-visual");
+    if (modalVisual) {
+      modalVisual.style.removeProperty("--bg-image");
+    }
+    
+    const secTitleEl = document.getElementById("booking-section-title");
+    if (secTitleEl) secTitleEl.textContent = "Prenota il tuo Tavolo";
+    const subEl = document.getElementById("booking-section-subtitle");
+    if (subEl) subEl.textContent = "Ti riserveremo un tavolo fino al tuo arrivo. La prenotazione arriva direttamente a Simone su WhatsApp per conferma immediata.";
+    const submitText = document.getElementById("booking-submit-text");
+    if (submitText) submitText.textContent = "Invia Prenotazione Tavolo su WhatsApp";
+    
+    if (bookingForm) {
+      bookingForm.reset();
+    }
+    const inputPeople = document.getElementById("booking-people");
+    if (inputPeople) {
+      inputPeople.value = "4";
+    }
+    
+    const gameChoice = document.getElementById("booking-game-choice");
+    if (gameChoice) {
+      gameChoice.value = "";
+    }
+    
+    const targetModal = gameModal || document.getElementById("game-modal");
+    if (targetModal) {
+      targetModal.classList.add("active");
+    }
+    document.body.style.overflow = "hidden";
+  } catch (err) {
+    console.error("Errore apertura modal tavolo:", err);
   }
-  
-  const titleEl = document.getElementById("booking-section-title");
-  if (titleEl) titleEl.textContent = "Prenota il tuo Tavolo";
-  const subEl = document.getElementById("booking-section-subtitle");
-  if (subEl) subEl.textContent = "Ti riserveremo un tavolo fino al tuo arrivo. La prenotazione arriva direttamente a Simone su WhatsApp per conferma immediata.";
-  const submitText = document.getElementById("booking-submit-text");
-  if (submitText) submitText.textContent = "Invia Prenotazione Tavolo su WhatsApp";
-  
-  bookingForm.reset();
-  const inputPeople = document.getElementById("booking-people");
-  if (inputPeople) {
-    inputPeople.value = "4";
-  }
-  
-  const gameChoice = document.getElementById("booking-game-choice");
-  if (gameChoice) {
-    gameChoice.value = "";
-  }
-  
-  gameModal.classList.add("active");
-  document.body.style.overflow = "hidden";
 }
 
 function closeGameModal() {
@@ -1136,11 +1161,30 @@ const btnHeaderBookTable = document.getElementById("btn-header-book-table");
 const btnNoticeBookTable = document.getElementById("btn-notice-book-table");
 
 if (btnHeaderBookTable) {
-  btnHeaderBookTable.addEventListener("click", openTableBookingModal);
+  btnHeaderBookTable.addEventListener("click", (e) => {
+    e.preventDefault();
+    openTableBookingModal();
+  });
 }
 if (btnNoticeBookTable) {
-  btnNoticeBookTable.addEventListener("click", openTableBookingModal);
+  btnNoticeBookTable.addEventListener("click", (e) => {
+    e.preventDefault();
+    openTableBookingModal();
+  });
 }
+
+// Delegated click fallback across the whole document
+document.addEventListener("click", (e) => {
+  const tableBtn = e.target.closest("#btn-header-book-table, #btn-notice-book-table, .btn-open-table-booking");
+  if (tableBtn) {
+    e.preventDefault();
+    openTableBookingModal();
+  }
+});
+
+// Expose functions globally to window for inline onclick handlers
+window.openTableBookingModal = openTableBookingModal;
+window.openGameModal = openGameModal;
 
 // Form Booking Submit to WhatsApp for Board Games & Tables
 bookingForm.addEventListener("submit", (e) => {
